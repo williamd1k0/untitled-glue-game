@@ -2,7 +2,7 @@
 
 [ext_resource path="res://game/gameplay/Puzzle.gd" type="Script" id=1]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "done"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -17,8 +17,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "hint"
+[sub_resource type="Animation" id=2]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -54,5 +53,5 @@ show_behind_parent = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PuzzleRef"]
 autoplay = "hint"
-anims/done = SubResource( 2 )
-anims/hint = SubResource( 1 )
+anims/done = SubResource( 1 )
+anims/hint = SubResource( 2 )
