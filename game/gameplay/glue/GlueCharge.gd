@@ -19,3 +19,6 @@ func set_amount(amount):
 		return
 	if current_amount == max_amount:
 		emit_signal("recharged")
+
+func deplete():
+	set_amount(0)
