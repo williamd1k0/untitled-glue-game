@@ -72,7 +72,7 @@ anims/done = SubResource( 2 )
 anims/hint = SubResource( 3 )
 
 [node name="RefPosition" type="Position2D" parent="."]
-position = Vector2( -456, 656 )
+position = Vector2( 640, 654 )
 
 [node name="PuzzleRef" type="Sprite" parent="RefPosition"]
 show_behind_parent = true
