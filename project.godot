@@ -34,6 +34,10 @@ config/icon="res://icon.png"
 window/size/width=1280
 window/size/height=720
 
+[editor_plugins]
+
+enabled=PoolStringArray( "networked_editor" )
+
 [physics]
 
 2d/default_gravity_vector=Vector2( 0, 3 )
