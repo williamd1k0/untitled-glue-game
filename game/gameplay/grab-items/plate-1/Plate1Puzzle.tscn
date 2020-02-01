@@ -11,6 +11,10 @@
 [sub_resource type="PhysicsMaterial" id=1]
 
 [node name="Puzzle" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 1 )
+
+[node name="Pieces" parent="." index="0"]
+visible = false
 
 [node name="Piece1" parent="Pieces" index="0" instance=ExtResource( 2 )]
 position = Vector2( -131, -40 )
@@ -19,22 +23,18 @@ physics_material_override = SubResource( 1 )
 [node name="Piece2" parent="Pieces" index="1" instance=ExtResource( 4 )]
 position = Vector2( 4, -31 )
 physics_material_override = SubResource( 1 )
-can_sleep = false
 
 [node name="Piece3" parent="Pieces" index="2" instance=ExtResource( 5 )]
 position = Vector2( -22, -54 )
 physics_material_override = SubResource( 1 )
-can_sleep = false
 
 [node name="Piece4" parent="Pieces" index="3" instance=ExtResource( 6 )]
 position = Vector2( 99.338, -40.4359 )
 physics_material_override = SubResource( 1 )
-can_sleep = false
 
 [node name="Piece5" parent="Pieces" index="4" instance=ExtResource( 7 )]
 position = Vector2( 143.709, -53.5324 )
 physics_material_override = SubResource( 1 )
-can_sleep = false
 
 [node name="PuzzleRef" parent="." index="2"]
 position = Vector2( 637.719, 613.332 )

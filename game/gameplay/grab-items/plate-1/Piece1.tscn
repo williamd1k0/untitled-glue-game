@@ -13,9 +13,5 @@ can_sleep = false
 scale = Vector2( 1, 1 )
 animation = "1"
 
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
-
 [node name="CollisionPolygon2D" parent="." index="2"]
-visible = false
 polygon = PoolVector2Array( 17.9866, -40.1578, 38.1338, -20.8865, 20.6145, 7.72835, 66.1647, -5.99512, 66.4567, 40.4311, -0.992676, 40.7231, -23.1838, 3.9325, -33.6954, 4.51647, -48.2948, -4.24319, -63.1862, -21.4705, -65.5222, -30.5222, -64.0622, -36.3619, -58.5144, -40.4498 )

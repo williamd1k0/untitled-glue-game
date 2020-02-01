@@ -142,3 +142,7 @@ anims/grab = SubResource( 2 )
 anims/idle = SubResource( 3 )
 
 [node name="GlueCast" parent="." index="4" instance=ExtResource( 6 )]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="5"]
+scale = Vector2( 5.75, 11.2 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

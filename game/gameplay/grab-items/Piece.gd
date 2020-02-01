@@ -4,9 +4,9 @@ extends GrabItem
 const GLUE_MASK = 4
 
 export(PoolIntArray) var dependencies
+export(float) var glue_consume = 0.05
 var glue = 0
 var glue_max = 6
-var glue_consume = 0.05
 
 onready var sprite = $Sprite
 
