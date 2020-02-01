@@ -2,11 +2,11 @@
 
 [ext_resource path="res://game/gameplay/Puzzle.gd" type="Script" id=1]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "completed"
 step = 0.05
 tracks/0/type = "value"
-tracks/0/path = NodePath("PuzzleRef:position")
+tracks/0/path = NodePath("RefPosition:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -18,10 +18,10 @@ tracks/0/keys = {
 "values": [ Vector2( 640, 654 ), Vector2( 688, 656 ), Vector2( -456, 656 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "done"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("RefPosition/PuzzleRef:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -33,12 +33,12 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "hint"
 length = 3.0
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("./PuzzleRef:modulate")
+tracks/0/path = NodePath("RefPosition/PuzzleRef:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -65,13 +65,15 @@ __meta__ = {
 [node name="DropPos" type="Position2D" parent="."]
 position = Vector2( 640, -144 )
 
-[node name="PuzzleRef" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0 )
-show_behind_parent = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "hint"
+anims/completed = SubResource( 1 )
+anims/done = SubResource( 2 )
+anims/hint = SubResource( 3 )
+
+[node name="RefPosition" type="Position2D" parent="."]
 position = Vector2( -456, 656 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/completed = SubResource( 2 )
-anims/done = SubResource( 3 )
-anims/hint = SubResource( 4 )
+[node name="PuzzleRef" type="Sprite" parent="RefPosition"]
+show_behind_parent = true
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

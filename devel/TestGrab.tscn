@@ -27,8 +27,6 @@ layer = 0
 
 [node name="Godot" parent="GameLayer" instance=ExtResource( 2 )]
 
-[node name="Puzzle" parent="GameLayer" instance=ExtResource( 6 )]
-
 [node name="Glue" parent="GameLayer" instance=ExtResource( 5 )]
 position = Vector2( 1115.66, -159.002 )
 
@@ -51,6 +49,8 @@ shape = SubResource( 3 )
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GameLayer/StaticBody2D"]
 position = Vector2( 1288, 328 )
 shape = SubResource( 3 )
+
+[node name="Puzzle" parent="GameLayer" instance=ExtResource( 6 )]
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 

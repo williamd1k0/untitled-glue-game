@@ -66,12 +66,12 @@ func _on_FitArea_body_entered(body, piece_id):
 
 func _on_Tween_all_completed():
 	if fit_pieces.size() == pieces_total:
-		$PuzzleRef/AnimationPlayer.play("done")
-		fit_area.hide()
+		$AnimationPlayer.play("done")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "done":
+		fit_area.hide()
 		$AnimationPlayer.play("completed")
 	elif anim_name == "completed":
 		queue_free()

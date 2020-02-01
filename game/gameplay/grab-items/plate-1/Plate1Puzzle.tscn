@@ -11,10 +11,6 @@
 [sub_resource type="PhysicsMaterial" id=1]
 
 [node name="Puzzle" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 1 )
-
-[node name="Pieces" parent="." index="0"]
-visible = false
 
 [node name="Piece1" parent="Pieces" index="0" instance=ExtResource( 2 )]
 position = Vector2( -131, -40 )
@@ -37,5 +33,6 @@ position = Vector2( 143.709, -53.5324 )
 physics_material_override = SubResource( 1 )
 
 [node name="PuzzleRef" parent="." index="2"]
-position = Vector2( 637.719, 613.332 )
+modulate = Color( 1, 1, 1, 1 )
+position = Vector2( 640, 613.564 )
 texture = ExtResource( 3 )
