@@ -1,17 +1,11 @@
 extends GrabItem
 
-signal glue_amount_changed(new_amount)
+export(Resource) var charge
+export(float) var squeeze_ratio = 10.0
 
-export(float) var max_glue = 200.0
-export(float) var squeeze_amount_per_second = 10.0
-
-var current_glue
-var depleted = false
 
 func _ready():
-	current_glue = max_glue
-
-
+	charge.connect("depleted", self, "_on_charge_depleted")
 func _process(delta):
 	squeeze(delta)
 
@@ -19,15 +13,15 @@ func _process(delta):
 func squeeze(delta):
 	if grabber == null:
 		return
-	if current_glue <= 0:
-		depleted = true
-		collision_layer = 0
-		collision_mask = 0
-		grabber.release()
-		return
-	current_glue -= squeeze_amount_per_second * delta
-	emit_signal("glue_amount_changed", current_glue)
+	charge.current_amount -= squeeze_ratio * delta
 
 
 func can_grab():
-	return .can_grab() and not depleted
+	return .can_grab() and charge.current_amount > 0
+
+
+func _on_charge_depleted():
+	collision_layer = 0
+	collision_mask = 0
+	if grabber != null:
+		grabber.release()

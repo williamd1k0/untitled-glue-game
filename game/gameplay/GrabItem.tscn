@@ -4,6 +4,7 @@
 [ext_resource path="res://game/gameplay/GrabItem.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.05
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/gameplay/GlueRecharge.gd" type="Script" id=1]
+[ext_resource path="res://game/gameplay/glue/GlueCharge.tres" type="Resource" id=2]
+
+[node name="GlueRecharger" type="Node"]
+script = ExtResource( 1 )
+glue_charge = ExtResource( 2 )

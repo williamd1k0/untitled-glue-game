@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/grab-items/glue.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://assets/textures/clue-particle.png" type="Texture" id=3]
 [ext_resource path="res://game/gameplay/grab-items/Glue.gd" type="Script" id=4]
+[ext_resource path="res://game/gameplay/glue/GlueCharge.tres" type="Resource" id=5]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.75 ), 0.0, 0.0, 0, 0 ]
@@ -110,7 +111,7 @@ tracks/3/keys = {
 
 [node name="Glue" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
-max_glue = 30.0
+charge = ExtResource( 5 )
 
 [node name="Sprite" parent="." index="0"]
 frames = ExtResource( 2 )
