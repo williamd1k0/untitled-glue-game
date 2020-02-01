@@ -16,8 +16,9 @@ func _ready():
 func _process(delta):
 	if has_node("Sprite"):
 		if glue > 0:
-			glue -= glue_consume
+			glue -= glue_consume * delta
 		(sprite.material as ShaderMaterial).set_shader_param('aura_width', glue)
+
 
 func has_glue():
 	return glue > 0
