@@ -3,7 +3,7 @@
 [ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/grab-items/Piece.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 0.8 ) ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -35,5 +35,5 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="Animator" parent="." index="3"]
-anims/grab = SubResource( 2 )
-anims/idle = SubResource( 3 )
+anims/grab = SubResource( 1 )
+anims/idle = SubResource( 2 )

@@ -24,7 +24,6 @@ layer = 0
 [node name="Background" parent="GameLayer" instance=ExtResource( 3 )]
 
 [node name="Puzzle" parent="GameLayer" instance=ExtResource( 6 )]
-position = Vector2( 0, -792 )
 
 [node name="Glue" parent="GameLayer" instance=ExtResource( 5 )]
 position = Vector2( 1115.66, -159.002 )
