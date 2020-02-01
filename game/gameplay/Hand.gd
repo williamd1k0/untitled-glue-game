@@ -27,7 +27,6 @@ export(float) var speed = 500
 var deadzone = 0.3
 var grabbing = false
 
-var item_to_grab: GrabItem
 var grabbed_item: GrabItem
 
 onready var grab_position = $GrabPosition
@@ -51,10 +50,7 @@ func _physics_process(delta):
 		input_motion.x = 0
 	if abs(input_motion.y) < deadzone:
 		input_motion.y = 0
-	#print(input_motion)
 	translate(input_motion*speed*delta)
-	#if grabbed_item:
-	#	grabbed_item.global_position = grab_position.global_position
 
 func find_grab_item():
 	var bodies = get_overlapping_bodies()
@@ -76,11 +72,3 @@ func release():
 		grabbed_item.release()
 		grabbed_item = null
 		emit_signal("release")
-
-func _on_body_entered(body):
-	if body is GrabItem:
-		item_to_grab = body
-
-func _on_body_exited(body):
-	if not grabbed_item and body == item_to_grab:
-		item_to_grab = null
