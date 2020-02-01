@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/gameplay/grab-items/plate-1/Plate1Piece.tscn" type="PackedScene" id=1]
+
+[node name="Piece" instance=ExtResource( 1 )]
+piece_id = 5
+dependencies = PoolIntArray( 4 )
+
+[node name="Sprite" parent="." index="0"]
+animation = "5"
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( -54.3108, -7.11385, -43.069, -27.349, 49.8628, -27.0492, 53.76, -24.5011, 55.4088, -21.2035, 55.5587, -14.6084, 51.3617, -6.3644, 40.2699, 6.82593, 30.527, 14.4703, 23.0325, 17.3182, 13.5894, 16.8686, 6.99428, 28.1103, -13.6906, 7.72527, -26.2813, 21.2154 )

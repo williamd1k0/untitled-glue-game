@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Hand",
 "language": "GDScript",
 "path": "res://game/gameplay/Hand.gd"
+}, {
+"base": "GrabItem",
+"class": "Piece",
+"language": "GDScript",
+"path": "res://game/gameplay/grab-items/Piece.gd"
 } ]
 _global_script_class_icons={
 "GrabItem": "",
-"Hand": ""
+"Hand": "",
+"Piece": ""
 }
 
 [application]
