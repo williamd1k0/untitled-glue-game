@@ -29,4 +29,5 @@ func _on_charge_depleted():
 
 
 func _on_VisibilityNotifier2D_screen_exited():
+	charge.deplete()
 	queue_free()

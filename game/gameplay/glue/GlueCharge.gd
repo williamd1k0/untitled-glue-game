@@ -14,6 +14,7 @@ func set_amount(amount):
 	current_amount = clamp(current_amount, 0, max_amount)
 	emit_signal("amount_changed", current_amount)
 	if  current_amount == 0:
+		
 		emit_signal("depleted")
 	if not recharging:
 		return
@@ -21,4 +22,6 @@ func set_amount(amount):
 		emit_signal("recharged")
 
 func deplete():
+	if recharging:
+		return
 	set_amount(0)
