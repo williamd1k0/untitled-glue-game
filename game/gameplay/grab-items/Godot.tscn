@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=1]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 1.0
+
+[node name="Godot" instance=ExtResource( 1 )]
+physics_material_override = SubResource( 1 )
