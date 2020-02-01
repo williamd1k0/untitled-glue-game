@@ -30,11 +30,6 @@ var grabbing = false
 var item_to_grab: GrabItem
 var grabbed_item: GrabItem
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	if hand == HandMode.RIGHT:
-		$GrabPosition.position.x *= -1
-
 
 func _physics_process(delta):
 	var grab := Input.get_joy_axis(0, JOYMAP[hand][TRIGGER]) >= 0.9

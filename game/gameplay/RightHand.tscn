@@ -3,6 +3,7 @@
 [ext_resource path="res://game/gameplay/Hand.tscn" type="PackedScene" id=1]
 
 [node name="RightHand" instance=ExtResource( 1 )]
+hand = 1
 
 [node name="Sprite" parent="." index="1"]
 position = Vector2( 71, -51 )

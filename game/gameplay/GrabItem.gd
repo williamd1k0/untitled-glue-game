@@ -14,7 +14,6 @@ func _physics_process(delta):
 	pass
 
 func _integrate_forces(state):
-	#print(grabbed)
 	if grabbed != null:
 		state.transform = grabbed.global_transform
 		print(grabbed.global_transform)
@@ -22,14 +21,14 @@ func _integrate_forces(state):
 func grab(hand):
 	collision_mask = 0
 	collision_layer = 0
+	gravity_scale = 0
 	grabbed = hand
-	apply_central_impulse(Vector2(1, 1))
 	rotation = 0
-	print('grabbed')
 	$Animator.play("grab")
 
 func release():
 	grabbed = null
 	collision_mask = 1
 	collision_layer = 1
+	gravity_scale = 1
 	$Animator.play("idle")
