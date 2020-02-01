@@ -5,17 +5,16 @@
 [ext_resource path="res://game/gameplay/Arm.tscn" type="PackedScene" id=3]
 
 [node name="Hands" type="Node2D"]
+z_index = 1
 
 [node name="LeftHand" parent="." instance=ExtResource( 1 )]
 position = Vector2( 402.805, 422.945 )
-z_index = 0
 
 [node name="Position2D" type="Position2D" parent="LeftHand"]
 position = Vector2( -151.244, 49.4373 )
 
 [node name="RightHand" parent="." instance=ExtResource( 2 )]
 position = Vector2( 883.654, 425.463 )
-z_index = 0
 
 [node name="Position2D" type="Position2D" parent="RightHand"]
 position = Vector2( 136.777, 46.9193 )

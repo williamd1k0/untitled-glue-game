@@ -7,10 +7,7 @@ signal recharged
 export (float) var max_amount = 30
 
 var current_amount = 0 setget set_amount
-
-func _init():
-	current_amount = max_amount
-
+var recharging = false
 
 func set_amount(amount):
 	current_amount = amount
@@ -18,5 +15,7 @@ func set_amount(amount):
 	emit_signal("amount_changed", current_amount)
 	if  current_amount == 0:
 		emit_signal("depleted")
-	elif current_amount == max_amount:
+	if not recharging:
+		return
+	if current_amount == max_amount:
 		emit_signal("recharged")
