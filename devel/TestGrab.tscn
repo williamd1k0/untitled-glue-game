@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://game/gameplay/Hands.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/interface/Interface.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/gameplay/grab-items/Glue.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 640, 32.0001 )
@@ -19,11 +20,11 @@ layer = 0
 
 [node name="Background" parent="GameLayer" instance=ExtResource( 3 )]
 
-[node name="GrabItem" parent="GameLayer" instance=ExtResource( 2 )]
-position = Vector2( 686.608, 214.218 )
+[node name="Glue" parent="GameLayer" instance=ExtResource( 5 )]
+position = Vector2( 1115.66, -159.002 )
 
-[node name="GrabItem2" parent="GameLayer" instance=ExtResource( 2 )]
-position = Vector2( 467.164, 239.818 )
+[node name="GrabItem" parent="GameLayer" instance=ExtResource( 2 )]
+position = Vector2( 354.444, -159.002 )
 
 [node name="Hands" parent="GameLayer" instance=ExtResource( 1 )]
 
