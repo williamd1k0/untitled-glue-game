@@ -30,6 +30,8 @@ var grabbing = false
 var item_to_grab: GrabItem
 var grabbed_item: GrabItem
 
+onready var grab_position = $GrabPosition
+
 
 func _physics_process(delta):
 	var grab := Input.get_joy_axis(0, JOYMAP[hand][TRIGGER]) >= 0.9
@@ -52,12 +54,12 @@ func _physics_process(delta):
 	#print(input_motion)
 	translate(input_motion*speed*delta)
 	#if grabbed_item:
-	#	grabbed_item.global_position = $GrabPosition.global_position
+	#	grabbed_item.global_position = grab_position.global_position
 
 func grab():
-	if item_to_grab and not item_to_grab.grabbed:
+	if item_to_grab and item_to_grab.can_grab():
 		grabbed_item = item_to_grab
-		grabbed_item.grab($GrabPosition)
+		grabbed_item.grab(self)
 		print('grab item')
 		emit_signal("grab")
 
