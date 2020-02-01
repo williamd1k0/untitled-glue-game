@@ -76,8 +76,11 @@ __meta__ = {
 Right hand will be automatically mirrored."
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Animator" type="AnimationPlayer" parent="."]
+autoplay = "idle"
 anims/grab = SubResource( 2 )
 anims/idle = SubResource( 3 )
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

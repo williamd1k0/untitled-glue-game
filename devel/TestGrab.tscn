@@ -1,11 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/gameplay/Hands.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=2]
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1037.45, 67.1138 )
+
 [node name="TestGrab" type="Node2D"]
 
 [node name="GrabItem" parent="." instance=ExtResource( 2 )]
-position = Vector2( 602.757, 485.6 )
+position = Vector2( 867.538, 298.478 )
+
+[node name="GrabItem2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 435.164, 357.057 )
 
 [node name="Hands" parent="." instance=ExtResource( 1 )]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 611.667, 617.257 )
+shape = SubResource( 1 )

@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Area2D",
+"base": "RigidBody2D",
 "class": "GrabItem",
 "language": "GDScript",
 "path": "res://game/gameplay/GrabItem.gd"
@@ -33,6 +33,10 @@ config/icon="res://icon.png"
 
 window/size/width=1280
 window/size/height=720
+
+[physics]
+
+2d/default_gravity_vector=Vector2( 0, 3 )
 
 [rendering]
 

@@ -40,11 +40,11 @@ func _physics_process(delta):
 	var grab := Input.get_joy_axis(0, JOYMAP[hand][TRIGGER]) >= 0.9
 	if grabbing != grab:
 		grabbing = grab
-		$AnimationPlayer.play(ANIM_MAP[grabbing])
+		$Animator.play(ANIM_MAP[grabbing])
 		if grabbing:
 			grab()
 		else:
-			relase()
+			release()
 
 	var input_motion := Vector2(
 		Input.get_joy_axis(0, JOYMAP[hand][HORIZONTAL]),
@@ -56,17 +56,17 @@ func _physics_process(delta):
 		input_motion.y = 0
 	#print(input_motion)
 	translate(input_motion*speed*delta)
-	if grabbed_item:
-		grabbed_item.global_position = $GrabPosition.global_position
+	#if grabbed_item:
+	#	grabbed_item.global_position = $GrabPosition.global_position
 
 func grab():
 	if item_to_grab and not item_to_grab.grabbed:
 		grabbed_item = item_to_grab
-		grabbed_item.grab(self)
+		grabbed_item.grab($GrabPosition)
 		print('grab item')
 		emit_signal("grab")
 
-func relase():
+func release():
 	if grabbed_item:
 		grabbed_item.release()
 		grabbed_item = null
@@ -74,9 +74,16 @@ func relase():
 
 func _on_area_entered(area):
 	if area is GrabItem:
-		prints('area enter', area)
 		item_to_grab = area
 
 func _on_area_exited(area):
 	if area == item_to_grab:
+		item_to_grab = null
+
+func _on_body_entered(body):
+	if body is GrabItem:
+		item_to_grab = body
+
+func _on_body_exited(body):
+	if not grabbed_item and body == item_to_grab:
 		item_to_grab = null
