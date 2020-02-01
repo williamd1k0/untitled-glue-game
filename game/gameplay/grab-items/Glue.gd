@@ -11,7 +11,6 @@ func _ready():
 func _process(delta):
 	squeeze(delta)
 
-
 func squeeze(delta):
 	if grabber == null:
 		return
