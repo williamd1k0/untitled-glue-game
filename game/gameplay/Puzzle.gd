@@ -5,17 +5,14 @@ var pieces_total = 0
 var fit_area := Node2D.new()
 var tween := Tween.new()
 
-func _enter_tree():
-	pass
-
 func _ready():
 	add_child(fit_area)
 	add_child(tween)
 	tween.connect("tween_all_completed", self, "_on_Tween_all_completed")
-	create_fit_objects()
+	create_fit_areas()
 	$Pieces.position = $DropPos.position
 
-func create_fit_objects():
+func create_fit_areas():
 	for piece in $Pieces.get_children():
 		pieces_total += 1
 		prints(piece.get_id(), piece.position)
@@ -34,9 +31,7 @@ func get_fit_area(piece_id):
 func fit_piece(piece: Piece):
 	var piece_id = piece.get_id()
 	fit_pieces.append(piece_id)
-	prints(piece_id, 'fit')
-	#piece.fit(get_fit_area(piece.get_id()).global_position)
-	var area = get_fit_area(piece_id)
+	var area: Area2D = get_fit_area(piece_id)
 	var sprite: AnimatedSprite = piece.release_sprite()
 	var piece_pos = piece.global_position
 	sprite.scale = Vector2(1, 1) # workaround :P
@@ -47,7 +42,7 @@ func fit_piece(piece: Piece):
 		0.2, Tween.TRANS_BACK, Tween.EASE_IN
 	)
 	tween.start()
-	piece.queue_free()
+	piece.destroy()
 
 func check_piece(piece: Piece):
 	if piece.has_glue() and not piece.has_grabber():
