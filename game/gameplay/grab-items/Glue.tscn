@@ -139,3 +139,7 @@ polygon = PoolVector2Array( 6.64089, -111.777, 0.660294, -115.194, -5.74749, -11
 [node name="Animator" parent="." index="3"]
 anims/grab = SubResource( 2 )
 anims/idle = SubResource( 3 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="4"]
+scale = Vector2( 5.75, 11.2 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

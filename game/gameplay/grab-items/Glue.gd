@@ -6,6 +6,9 @@ export(float) var squeeze_ratio = 10.0
 
 func _ready():
 	charge.connect("depleted", self, "_on_charge_depleted")
+	charge.current_amount = charge.max_amount
+
+
 func _process(delta):
 	squeeze(delta)
 
@@ -25,3 +28,7 @@ func _on_charge_depleted():
 	collision_mask = 0
 	if grabber != null:
 		grabber.release()
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
