@@ -56,9 +56,17 @@ func _physics_process(delta):
 	#if grabbed_item:
 	#	grabbed_item.global_position = grab_position.global_position
 
+func find_grab_item():
+	var bodies = get_overlapping_bodies()
+	if bodies.size():
+		for body in bodies:
+			if body is GrabItem and body.can_grab():
+				return body
+
 func grab():
-	if item_to_grab and item_to_grab.can_grab():
-		grabbed_item = item_to_grab
+	var item = find_grab_item()
+	if item:
+		grabbed_item = item
 		grabbed_item.grab(self)
 		print('grab item')
 		emit_signal("grab")
@@ -68,14 +76,6 @@ func release():
 		grabbed_item.release()
 		grabbed_item = null
 		emit_signal("release")
-
-func _on_area_entered(area):
-	if area is GrabItem:
-		item_to_grab = area
-
-func _on_area_exited(area):
-	if area == item_to_grab:
-		item_to_grab = null
 
 func _on_body_entered(body):
 	if body is GrabItem:

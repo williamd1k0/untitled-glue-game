@@ -13,6 +13,7 @@ func _process(delta):
 
 func squeeze(delta):
 	if grabber == null:
+		$GlueCast.enabled = false
 		return
 	charge.current_amount -= squeeze_ratio * delta
 	$GlueCast.enabled = charge.current_amount > 0
