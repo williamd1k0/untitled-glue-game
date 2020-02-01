@@ -44,7 +44,7 @@ window/stretch/aspect="keep"
 
 [physics]
 
-2d/default_gravity_vector=Vector2( 0, 3 )
+2d/default_gravity_vector=Vector2( 0, 4 )
 
 [rendering]
 

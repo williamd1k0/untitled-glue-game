@@ -1,16 +1,43 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/gameplay/Puzzle.gd" type="Script" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "hint"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.05 ) ]
+}
 
 [node name="Puzzle" type="Node2D"]
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [ 609.725 ]
 }
 
 [node name="Pieces" type="Position2D" parent="."]
-position = Vector2( 640, 500 )
+position = Vector2( 640, 654 )
 __meta__ = {
-"_gizmo_extents_": 400.0
+"_gizmo_extents_": 640.0
 }
 
+[node name="DropPos" type="Position2D" parent="."]
+position = Vector2( 640, -144 )
+
 [node name="PuzzleRef" type="Sprite" parent="."]
-modulate = Color( 0.921569, 0.219608, 0.862745, 0.643137 )
+modulate = Color( 1, 1, 1, 0 )
 show_behind_parent = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PuzzleRef"]
+autoplay = "hint"
+anims/hint = SubResource( 1 )
