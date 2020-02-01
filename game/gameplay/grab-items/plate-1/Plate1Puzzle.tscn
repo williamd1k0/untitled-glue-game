@@ -15,7 +15,6 @@
 [node name="Piece1" parent="Pieces" index="0" instance=ExtResource( 2 )]
 position = Vector2( -131, -40 )
 physics_material_override = SubResource( 1 )
-can_sleep = false
 
 [node name="Piece2" parent="Pieces" index="1" instance=ExtResource( 4 )]
 position = Vector2( 4, -31 )

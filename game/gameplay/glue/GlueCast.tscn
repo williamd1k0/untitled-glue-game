@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/gameplay/glue/GlueCast.gd" type="Script" id=1]
+
+[node name="GlueCast" type="RayCast2D"]
+cast_to = Vector2( 0, 1440 )
+collision_mask = 4
+script = ExtResource( 1 )

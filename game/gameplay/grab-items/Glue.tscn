@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/grab-items/glue.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://assets/textures/clue-particle.png" type="Texture" id=3]
 [ext_resource path="res://game/gameplay/grab-items/Glue.gd" type="Script" id=4]
 [ext_resource path="res://game/gameplay/glue/GlueCharge.tres" type="Resource" id=5]
+[ext_resource path="res://game/gameplay/glue/GlueCast.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.75 ), 0.0, 0.0, 0, 0 ]
@@ -140,6 +141,4 @@ polygon = PoolVector2Array( 6.64089, -111.777, 0.660294, -115.194, -5.74749, -11
 anims/grab = SubResource( 2 )
 anims/idle = SubResource( 3 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="." index="4"]
-scale = Vector2( 5.75, 11.2 )
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[node name="GlueCast" parent="." index="4" instance=ExtResource( 6 )]
