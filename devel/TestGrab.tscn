@@ -9,10 +9,10 @@ extents = Vector2( 1037.45, 67.1138 )
 [node name="TestGrab" type="Node2D"]
 
 [node name="GrabItem" parent="." instance=ExtResource( 2 )]
-position = Vector2( 867.538, 298.478 )
+position = Vector2( 686.608, 214.218 )
 
 [node name="GrabItem2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 435.164, 357.057 )
+position = Vector2( 467.164, 239.818 )
 
 [node name="Hands" parent="." instance=ExtResource( 1 )]
 
