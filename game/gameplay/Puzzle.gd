@@ -24,6 +24,7 @@ func create_fit_objects():
 		area.global_position = piece.global_position
 		area.piece_id = piece.get_id()
 		area.connect("body_entered", self, "_on_FitArea_body_entered", [area.piece_id])
+		piece.connect("release", self, "_on_Piece_release", [piece])
 
 func get_fit_area(piece_id):
 	for area in fit_area.get_children():
@@ -36,31 +37,37 @@ func fit_piece(piece: Piece):
 	prints(piece_id, 'fit')
 	#piece.fit(get_fit_area(piece.get_id()).global_position)
 	var area = get_fit_area(piece_id)
-	var sprite = piece.release_sprite()
-	var gpos = piece.global_position
+	var sprite: AnimatedSprite = piece.release_sprite()
+	var piece_pos = piece.global_position
+	sprite.scale = Vector2(1, 1) # workaround :P
 	area.add_child(sprite)
-	#sprite.global_position = gpos
-	# TODO: add tween
 	tween.interpolate_property(
 		sprite, 'global_position',
-		gpos, area.global_position,
+		piece_pos, area.global_position,
 		0.2, Tween.TRANS_BACK, Tween.EASE_IN
 	)
 	tween.start()
-	#sprite.position = Vector2(0, 0)
 	piece.queue_free()
 
+func check_piece(piece: Piece):
+	if piece.has_glue() and not piece.has_grabber():
+		var depends = piece.dependencies
+		if depends.size():
+			for id in depends:
+				if not id in fit_pieces:
+					return # Needs dependencies to be fit before
+		fit_piece(piece)
+
+func _on_Piece_release(piece: Piece):
+	var area: Area2D = get_fit_area(piece.get_id())
+	if area.overlaps_body(piece):
+		check_piece(piece)
 
 func _on_FitArea_body_entered(body, piece_id):
 	if piece_id in fit_pieces:
 		return
 	if body is Piece and piece_id == body.get_id():
-		var depends = body.dependencies
-		if depends.size():
-			for id in depends:
-				if not id in fit_pieces:
-					return # Needs dependencies to be fit before
-		fit_piece(body)
+		check_piece(body)
 
 func _on_Tween_all_completed():
 	if fit_pieces.size() == pieces_total:

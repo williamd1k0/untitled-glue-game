@@ -1,6 +1,7 @@
 class_name GrabItem
 extends RigidBody2D
 
+signal release
 
 var grabber
 
@@ -31,6 +32,10 @@ func release():
 	#collision_layer = 1
 	gravity_scale = 1
 	$Animator.play("idle")
+	emit_signal("release")
+
+func has_grabber():
+	return grabber != null
 
 func can_grab():
-	return grabber == null
+	return not has_grabber()

@@ -40,6 +40,8 @@ layer = 0
 [node name="Glue" parent="GameLayer" instance=ExtResource( 5 )]
 position = Vector2( 1115.66, -159.002 )
 
+[node name="Hands" parent="GameLayer" instance=ExtResource( 1 )]
+
 [node name="StaticBody2D" type="StaticBody2D" parent="GameLayer"]
 physics_material_override = SubResource( 1 )
 __meta__ = {
