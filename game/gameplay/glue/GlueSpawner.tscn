@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/gameplay/glue/GlueSpawner.gd" type="Script" id=1]
+[ext_resource path="res://game/gameplay/grab-items/Glue.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/gameplay/glue/GlueCharge.tres" type="Resource" id=3]
+
+[node name="GlueSpawner" type="Position2D"]
+script = ExtResource( 1 )
+glue_scene = ExtResource( 2 )
+glue_charge = ExtResource( 3 )
