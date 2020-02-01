@@ -5,10 +5,9 @@
 [node name="Hands" type="Node2D"]
 
 [node name="LeftHand" parent="." instance=ExtResource( 1 )]
-modulate = Color( 0.996078, 0.235294, 0.235294, 1 )
 position = Vector2( 224.935, 331.723 )
 
 [node name="RightHand" parent="." instance=ExtResource( 1 )]
-modulate = Color( 0.105882, 0.729412, 0.941176, 1 )
 position = Vector2( 883.837, 336.267 )
+scale = Vector2( -1, 1 )
 hand = 1
