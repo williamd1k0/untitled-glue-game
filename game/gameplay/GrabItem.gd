@@ -14,11 +14,15 @@ func grab(hand):
 	gravity_scale = 0
 	grabber = hand
 	rotation = 0
+	collision_layer &= ~1
+	collision_mask &= ~1
 	$Animator.play("grab")
 
 func release():
 	grabber = null
 	gravity_scale = 1
+	collision_layer |= 1
+	collision_mask |= 1
 	$Animator.play("idle")
 	emit_signal("release")
 

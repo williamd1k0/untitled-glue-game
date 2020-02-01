@@ -4,9 +4,9 @@ extends GrabItem
 const GLUE_MASK = 4
 
 export(PoolIntArray) var dependencies
-export(float) var glue_consume = 0.05
+const glue_consume = 0.5
+const glue_max = 6
 var glue = 0
-var glue_max = 6
 
 onready var sprite = $Sprite
 
@@ -16,8 +16,9 @@ func _ready():
 func _process(delta):
 	if has_node("Sprite"):
 		if glue > 0:
-			glue -= glue_consume * delta
-		(sprite.material as ShaderMaterial).set_shader_param('aura_width', glue)
+			glue = max(0, glue - glue_consume * delta)
+		var shader: ShaderMaterial = sprite.material
+		shader.set_shader_param('glue_amount', lerp(0, glue_max, glue))
 
 
 func has_glue():
@@ -31,7 +32,7 @@ func release_sprite():
 	return sprite
 
 func add_glue(amount):
-	glue = min(glue_max, glue+amount)
+	glue = min(1, glue+amount)
 
 func grab(hand):
 	.grab(hand)
