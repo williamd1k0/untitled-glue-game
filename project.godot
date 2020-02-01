@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Area2D",
+"class": "GrabItem",
+"language": "GDScript",
+"path": "res://game/gameplay/GrabItem.gd"
+}, {
+"base": "Area2D",
+"class": "Hand",
+"language": "GDScript",
+"path": "res://game/gameplay/Hand.gd"
+} ]
 _global_script_class_icons={
-
+"GrabItem": "",
+"Hand": ""
 }
 
 [application]

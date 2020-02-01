@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/gameplay/Hands.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=2]
+
+[node name="TestGrab" type="Node2D"]
+
+[node name="GrabItem" parent="." instance=ExtResource( 2 )]
+position = Vector2( 602.757, 485.6 )
+
+[node name="Hands" parent="." instance=ExtResource( 1 )]

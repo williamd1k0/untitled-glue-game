@@ -1,4 +1,8 @@
-extends KinematicBody2D
+class_name Hand
+extends Area2D
+
+signal grab
+signal release
 
 enum HandMode {
 	LEFT, RIGHT
@@ -23,16 +27,24 @@ export(float) var speed = 500
 var deadzone = 0.3
 var grabbing = false
 
+var item_to_grab: GrabItem
+var grabbed_item: GrabItem
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if hand == HandMode.RIGHT:
+		$GrabPosition.position.x *= -1
 
 
 func _physics_process(delta):
-	var grab = Input.get_joy_axis(0, JOYMAP[hand][TRIGGER]) >= 0.9
+	var grab := Input.get_joy_axis(0, JOYMAP[hand][TRIGGER]) >= 0.9
 	if grabbing != grab:
 		grabbing = grab
 		$AnimationPlayer.play(ANIM_MAP[grabbing])
+		if grabbing:
+			grab()
+		else:
+			relase()
 
 	var input_motion := Vector2(
 		Input.get_joy_axis(0, JOYMAP[hand][HORIZONTAL]),
@@ -43,4 +55,28 @@ func _physics_process(delta):
 	if abs(input_motion.y) < deadzone:
 		input_motion.y = 0
 	#print(input_motion)
-	move_and_collide(input_motion*speed*delta)
+	translate(input_motion*speed*delta)
+	if grabbed_item:
+		grabbed_item.global_position = $GrabPosition.global_position
+
+func grab():
+	if item_to_grab and not item_to_grab.grabbed:
+		grabbed_item = item_to_grab
+		grabbed_item.grab(self)
+		print('grab item')
+		emit_signal("grab")
+
+func relase():
+	if grabbed_item:
+		grabbed_item.release()
+		grabbed_item = null
+		emit_signal("release")
+
+func _on_area_entered(area):
+	if area is GrabItem:
+		prints('area enter', area)
+		item_to_grab = area
+
+func _on_area_exited(area):
+	if area == item_to_grab:
+		item_to_grab = null
