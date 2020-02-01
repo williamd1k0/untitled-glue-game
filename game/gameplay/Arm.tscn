@@ -1,38 +1,13 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/gameplay/Arm.gd" type="Script" id=1]
 
 [node name="Arm" type="Line2D"]
-position = Vector2( -144, 40 )
-points = PoolVector2Array( 0, 0, -160, 120, -235, 304 )
+position = Vector2( 192, 344 )
+points = PoolVector2Array( 0, 0, 256, -248 )
 width = 40.0
 default_color = Color( 1, 0.701961, 0.501961, 1 )
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
-
-[node name="Skeleton2D" type="Skeleton2D" parent="."]
-position = Vector2( -240, 312 )
-
-[node name="Bone2D" type="Bone2D" parent="Skeleton2D"]
-rotation = 0.00417675
-rest = Transform2D( 0.999991, 0.00417673, -0.00417673, 0.999991, 0, 0 )
-__meta__ = {
-"_edit_bone_": true,
-"_edit_ik_": true
-}
-
-[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D"]
-position = Vector2( 80, -192 )
-rotation = -0.00776409
-scale = Vector2( 1, 1 )
-rest = Transform2D( 0.99997, -0.00776402, 0.00776402, 0.99997, 80, -192 )
-__meta__ = {
-"_edit_bone_": true
-}
-
-[node name="Bone2D" type="Bone2D" parent="Skeleton2D/Bone2D/Bone2D"]
-position = Vector2( 168, -120 )
-rotation = 0.00355856
-rest = Transform2D( 0.999994, 0.00355855, -0.00355855, 0.999994, 168, -120 )
-__meta__ = {
-"_edit_bone_": true
-}
+script = ExtResource( 1 )

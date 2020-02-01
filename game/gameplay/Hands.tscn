@@ -1,12 +1,29 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://game/gameplay/LeftHand.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/RightHand.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/gameplay/Arm.tscn" type="PackedScene" id=3]
 
 [node name="Hands" type="Node2D"]
 
 [node name="LeftHand" parent="." instance=ExtResource( 1 )]
 position = Vector2( 402.805, 422.945 )
 
+[node name="Position2D" type="Position2D" parent="LeftHand"]
+position = Vector2( -151.244, 49.4373 )
+
 [node name="RightHand" parent="." instance=ExtResource( 2 )]
 position = Vector2( 883.654, 425.463 )
+
+[node name="Position2D" type="Position2D" parent="RightHand"]
+position = Vector2( 136.777, 46.9193 )
+
+[node name="LeftArm" parent="." instance=ExtResource( 3 )]
+position = Vector2( -17.4183, 732.92 )
+points = PoolVector2Array( 0, 0, 277.209, -269.129 )
+reference_path = NodePath("../LeftHand/Position2D")
+
+[node name="RightArm" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1280.09, 732.92 )
+points = PoolVector2Array( 0, 0, -255.495, -263.542 )
+reference_path = NodePath("../RightHand/Position2D")
