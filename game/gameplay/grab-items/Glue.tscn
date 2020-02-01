@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/grab-items/glue.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://assets/textures/clue-particle.png" type="Texture" id=3]
+[ext_resource path="res://game/gameplay/grab-items/Glue.gd" type="Script" id=4]
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.75 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -57,7 +58,7 @@ tracks/3/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:scale")
 tracks/0/interp = 1
@@ -108,6 +109,8 @@ tracks/3/keys = {
 }
 
 [node name="Glue" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+max_glue = 30.0
 
 [node name="Sprite" parent="." index="0"]
 frames = ExtResource( 2 )
@@ -124,7 +127,7 @@ direction = Vector2( 0, -1 )
 spread = 1.0
 gravity = Vector2( 0, 0 )
 initial_velocity = 400.0
-scale_amount_curve = SubResource( 3 )
+scale_amount_curve = SubResource( 1 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = null
@@ -133,5 +136,5 @@ shape = null
 polygon = PoolVector2Array( 6.64089, -111.777, 0.660294, -115.194, -5.74749, -111.634, -29.5871, -50.6404, -31.8513, -31.0181, -59.0206, -11.7731, -57.8885, 98.7909, -39.1076, 114.314, 40.9776, 114.64, 58.7132, 96.1494, 57.734, -13.0533, 33.0533, -29.886, 31.5438, -47.9989 )
 
 [node name="Animator" parent="." index="3"]
-anims/grab = SubResource( 1 )
-anims/idle = SubResource( 2 )
+anims/grab = SubResource( 2 )
+anims/idle = SubResource( 3 )

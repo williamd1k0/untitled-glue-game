@@ -2,7 +2,7 @@ class_name GrabItem
 extends RigidBody2D
 
 
-var grabbed
+var grabber
 
 
 # Called when the node enters the scene tree for the first time.
@@ -14,20 +14,23 @@ func _physics_process(delta):
 	pass
 
 func _integrate_forces(state):
-	if grabbed != null:
-		state.transform = grabbed.global_transform
+	if grabber != null:
+		state.transform = grabber.grab_position.global_transform
 
 func grab(hand):
 	#collision_mask = 0
 	#collision_layer = 0
 	gravity_scale = 0
-	grabbed = hand
+	grabber = hand
 	rotation = 0
 	$Animator.play("grab")
 
 func release():
-	grabbed = null
+	grabber = null
 	#collision_mask = 1
 	#collision_layer = 1
 	gravity_scale = 1
 	$Animator.play("idle")
+
+func can_grab():
+	return grabber == null
