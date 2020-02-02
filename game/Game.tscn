@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://game/gameplay/Time.tres" type="Resource" id=1]
 [ext_resource path="res://devel/GameTime.gd" type="Script" id=2]
 [ext_resource path="res://game/interface/GameOverScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/gameplay/PuzzleSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sound_effects/time_out.ogg" type="AudioStream" id=5]
 [ext_resource path="res://game/interface/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/gameplay/glue/Glue.tscn" type="PackedScene" id=13]
 [ext_resource path="res://game/gameplay/GlueRecharge.tscn" type="PackedScene" id=14]
@@ -74,6 +75,12 @@ layer = 2
 
 [node name="GameOverScreen" parent="InterfaceLayer" instance=ExtResource( 3 )]
 visible = false
+
+[node name="SFXTimeOut" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+volume_db = -8.0
+bus = "Jingles"
 [connection signal="finished" from="Time" to="." method="_on_Time_finished"]
 [connection signal="piece_fit" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_piece_fit"]
 [connection signal="tree_exited" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_tree_exited"]

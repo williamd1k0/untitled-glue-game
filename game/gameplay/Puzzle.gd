@@ -52,6 +52,7 @@ func fit_piece(piece: Piece):
 	)
 	tween.start()
 	emit_signal("piece_fit", piece_pos, score)
+	$SFXPieceFit.play()
 	piece.destroy()
 
 
