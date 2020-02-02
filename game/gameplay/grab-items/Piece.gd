@@ -11,7 +11,7 @@ var glue = 0
 onready var sprite = $Sprite
 
 func _ready():
-	sprite.material = sprite.material.duplicate(true)
+	sprite.material = sprite.material.duplicate()
 
 func _process(delta):
 	if has_node("Sprite"):

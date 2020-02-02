@@ -40,6 +40,9 @@ script = ExtResource( 2 )
 material = ExtResource( 3 )
 scale = Vector2( 1, 0.8 )
 
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
 [node name="Animator" parent="." index="3"]
 anims/grab = SubResource( 1 )
 anims/idle = SubResource( 2 )
