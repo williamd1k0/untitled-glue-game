@@ -1,12 +1,13 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/gameplay/Puzzle.tscn" type="PackedScene" id=1]
-[ext_resource path="res://game/gameplay/grab-items/plate-1/Piece1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/puzzles/plate-1/Piece1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/textures/plate/plate-complete.png" type="Texture" id=3]
-[ext_resource path="res://game/gameplay/grab-items/plate-1/Piece2.tscn" type="PackedScene" id=4]
-[ext_resource path="res://game/gameplay/grab-items/plate-1/Piece3.tscn" type="PackedScene" id=5]
-[ext_resource path="res://game/gameplay/grab-items/plate-1/Piece4.tscn" type="PackedScene" id=6]
-[ext_resource path="res://game/gameplay/grab-items/plate-1/Piece5.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/puzzles/plate-1/Piece2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/puzzles/plate-1/Piece3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/puzzles/plate-1/Piece4.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/puzzles/plate-1/Piece5.tscn" type="PackedScene" id=7]
+
 
 [sub_resource type="PhysicsMaterial" id=1]
 

@@ -1,8 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://game/gameplay/GrabItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/grab-items/GrabItem.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/grab-items/Piece.gd" type="Script" id=2]
-[ext_resource path="res://assets/vfx/glue-material.tres" type="Material" id=3]
+[ext_resource path="res://game/gameplay/glue/glue-material.tres" type="Material" id=3]
+
+
 
 [sub_resource type="Animation" id=1]
 tracks/0/type = "value"
