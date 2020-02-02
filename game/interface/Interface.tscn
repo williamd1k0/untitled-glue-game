@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/textures/clock-empty.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/clock-full.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://game/interface/Interface.gd" type="Script" id=4]
 [ext_resource path="res://game/gameplay/glue/GlueCharge.tres" type="Resource" id=5]
 [ext_resource path="res://game/gameplay/Time.tres" type="Resource" id=6]
+[ext_resource path="res://game/interface/PopLabel.tscn" type="PackedScene" id=7]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.858824, 0.886275, 0.890196, 1 )
@@ -40,6 +41,7 @@ __meta__ = {
 }
 glue_charge = ExtResource( 5 )
 time = ExtResource( 6 )
+pop_label_scene = ExtResource( 7 )
 
 [node name="TimeProgressBar" type="TextureProgress" parent="."]
 anchor_left = 0.5

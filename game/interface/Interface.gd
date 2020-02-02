@@ -25,8 +25,8 @@ func _on_Time_changed(value):
 	clock.value = value
 
 
-func _on_Puzzle_piece_fit(piece_position, piece_score):
+func create_pop_label(label_position, label_text):
 	var pop_label = pop_label_scene.instance()
-	pop_label.text = "%s" % piece_score
+	pop_label.text = "%s" % label_text
 	add_child(pop_label)
-	pop_label.rect_position = piece_position
+	pop_label.rect_position = label_position

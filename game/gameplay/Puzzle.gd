@@ -1,6 +1,6 @@
 extends Node2D
 
-signal piece_fit(piece_position, piece_score)
+signal piece_fit(piece_position, fit_score)
 
 
 export(float) var score = 200
