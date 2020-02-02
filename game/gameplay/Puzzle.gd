@@ -5,7 +5,7 @@ signal piece_fit(piece_position, fit_score)
 const PALETTE: Gradient = preload("res://game/puzzles/piece-colors.tres")
 var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 
-export(float) var score = 200
+export(int) var score = 100
 var fit_pieces = []
 var pieces_total = 0
 var fit_area := Node2D.new()

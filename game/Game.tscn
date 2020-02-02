@@ -25,6 +25,7 @@ bounce = 0.7
 
 [node name="Game" type="Node"]
 script = ExtResource( 20 )
+difficulty = 0.277393
 
 [node name="Time" type="Node" parent="."]
 script = ExtResource( 2 )
