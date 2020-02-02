@@ -3,9 +3,10 @@
 [ext_resource path="res://game/puzzles/vase-2/Vase2Piece.tscn" type="PackedScene" id=1]
 
 [node name="Piece" instance=ExtResource( 1 )]
+dependencies = PoolIntArray( 4 )
 
 [node name="Sprite" parent="." index="0"]
 animation = "2"
 
 [node name="CollisionPolygon2D" parent="." index="2"]
-polygon = PoolVector2Array( -66.5812, -4.40605, -37.843, -53.9272, -36.3514, -17.2338, -4.43115, -16.6372, 24.1626, -8.16851, 48.7243, 7.7966, 68.5626, 33.114, 74.2306, 46.434, 18.6834, 31.6026, -20.5927, 54.2951, -39.3238, 22.6726, -74.4721, 32.4789, -59.9924, 6.38953 )
+polygon = PoolVector2Array( -44.1926, -3.73597, -24.8605, -36.3602, -23.6555, -11.9645, -0.870243, -11.5671, 19.6586, -4.37626, 36.8239, 8.38176, 46.1025, 21.2558, 50.1618, 31.5782, 13.5115, 21.1398, -13.1216, 36.4716, -25.2876, 15.0531, -49.5278, 21.4321, -39.6693, 3.91884 )

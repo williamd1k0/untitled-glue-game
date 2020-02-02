@@ -9,21 +9,6 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "2",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 3 ) ],
-"loop": false,
-"name": "1",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 2 ) ],
 "loop": false,
 "name": "4",
@@ -38,6 +23,21 @@ animations = [ {
 "loop": false,
 "name": "0",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "1",
+"speed": 5.0
 } ]
 
 [node name="Piece" instance=ExtResource( 1 )]
@@ -45,3 +45,7 @@ animations = [ {
 [node name="Sprite" parent="." index="0"]
 frames = SubResource( 1 )
 animation = "0"
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = true
+shape = null

@@ -3,6 +3,10 @@
 [ext_resource path="res://game/puzzles/vase-2/Vase2Piece.tscn" type="PackedScene" id=1]
 
 [node name="Piece" instance=ExtResource( 1 )]
+dependencies = PoolIntArray( 1 )
 
 [node name="Sprite" parent="." index="0"]
 animation = "7"
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( -37.549, -49.9421, 37.8719, -49.7775, 42.7916, -44.9625, 42.6869, -31.0409, 38.2906, -27.0633, 27.6139, -26.1212, 24.048, -1.18769, 22.5896, 15.0156, 17.3889, 25.4489, -5.98639, 0.675251, -5.25367, 35.8456, -22.3155, 51.5467, -22.2108, 14.8062, -25.037, -13.1417, -27.5425, -26.2924, -37.5422, -26.709, -43.0976, -31.8478, -42.8893, -45.7363 )
