@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://game/gameplay/Puzzle.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/grab-items/plate-1/Piece1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/textures/plate/plate-complete.png" type="Texture" id=3]
 [ext_resource path="res://game/gameplay/grab-items/plate-1/Piece2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/gameplay/grab-items/plate-1/Piece3.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/gameplay/grab-items/plate-1/Piece4.tscn" type="PackedScene" id=6]
@@ -30,3 +31,7 @@ physics_material_override = SubResource( 1 )
 [node name="Piece5" parent="Pieces" index="4" instance=ExtResource( 7 )]
 position = Vector2( 143.709, -53.5324 )
 physics_material_override = SubResource( 1 )
+
+[node name="PuzzleRef" parent="RefPosition" index="0"]
+position = Vector2( 0, -40.4359 )
+texture = ExtResource( 3 )
