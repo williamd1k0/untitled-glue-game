@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/time_out.ogg-77ec830777fe4171de290403578e0c93.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/time_out.ogg"
+dest_files=[ "res://.import/time_out.ogg-77ec830777fe4171de290403578e0c93.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/glued.ogg-5df3bdce217588e279d069de1a3c9cb8.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/glued.ogg"
+dest_files=[ "res://.import/glued.ogg-5df3bdce217588e279d069de1a3c9cb8.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

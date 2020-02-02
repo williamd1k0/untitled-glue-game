@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/grab_piece.ogg-ef3f90688de3d9cffc2538ac574a09d2.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/grab_piece.ogg"
+dest_files=[ "res://.import/grab_piece.ogg-ef3f90688de3d9cffc2538ac574a09d2.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

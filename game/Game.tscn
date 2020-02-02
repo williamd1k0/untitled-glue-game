@@ -4,7 +4,7 @@
 [ext_resource path="res://devel/GameTime.gd" type="Script" id=2]
 [ext_resource path="res://game/interface/GameOverScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/gameplay/PuzzleSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/sound_effects/time_out.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/sfx/time_out.ogg" type="AudioStream" id=5]
 [ext_resource path="res://game/interface/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/gameplay/glue/Glue.tscn" type="PackedScene" id=13]
 [ext_resource path="res://game/gameplay/GlueRecharge.tscn" type="PackedScene" id=14]
@@ -16,17 +16,17 @@
 [ext_resource path="res://game/Game.gd" type="Script" id=20]
 
 [sub_resource type="PhysicsMaterial" id=1]
-bounce = 1.0
 
 [sub_resource type="PhysicsMaterial" id=2]
-bounce = 0.05
+bounce = 0.7
 
 [sub_resource type="PhysicsMaterial" id=3]
-bounce = 0.7
+bounce = 0.05
 
 [node name="Game" type="Node"]
 script = ExtResource( 20 )
-difficulty = 0.277393
+difficulty = 0.28
+time_difficulty = 0.210224
 
 [node name="Time" type="Node" parent="."]
 script = ExtResource( 2 )
@@ -41,16 +41,13 @@ time = ExtResource( 1 )
 [node name="Background" parent="LevelLayer/Level" instance=ExtResource( 19 )]
 
 [node name="Godot" parent="LevelLayer/Level" instance=ExtResource( 16 )]
+position = Vector2( 56, -224 )
 physics_material_override = SubResource( 1 )
-
-[node name="Glue" parent="LevelLayer/Level" instance=ExtResource( 13 )]
-position = Vector2( 1115.66, -159.002 )
-physics_material_override = SubResource( 2 )
 
 [node name="Hands" parent="LevelLayer/Level" instance=ExtResource( 18 )]
 
 [node name="Boundaries" type="StaticBody2D" parent="LevelLayer/Level"]
-physics_material_override = SubResource( 3 )
+physics_material_override = SubResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -61,8 +58,11 @@ polygon = PoolVector2Array( 0, 0, 0, 656, 1280, 656, 1280, 0, 1344, 0, 1344, 704
 [node name="Puzzle" parent="LevelLayer/Level" instance=ExtResource( 15 )]
 
 [node name="GlueSpawner" parent="LevelLayer/Level" instance=ExtResource( 17 )]
-position = Vector2( 896, -64 )
+position = Vector2( 896, -128 )
 container_path = NodePath("..")
+
+[node name="Glue" parent="LevelLayer/Level/GlueSpawner" instance=ExtResource( 13 )]
+physics_material_override = SubResource( 3 )
 
 [node name="PuzzleSpawner" parent="LevelLayer/Level" instance=ExtResource( 4 )]
 container = NodePath("..")

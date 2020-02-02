@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/theme/main-theme.tres" type="Theme" id=1]
+[ext_resource path="res://game/TitleScreen.gd" type="Script" id=2]
+[ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=3]
+
+[node name="TitleScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+game_scene = "res://game/Game.tscn"
+
+[node name="Background" parent="." instance=ExtResource( 3 )]
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -600.0
+text = "Untitled Glue Game"
+align = 1
+valign = 1
+
+[node name="Menu" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 512.0
+margin_top = 439.0
+margin_right = -511.0
+margin_bottom = -73.0
+custom_constants/separation = 13
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Play" type="Button" parent="Menu"]
+margin_top = 33.0
+margin_right = 257.0
+margin_bottom = 97.0
+rect_min_size = Vector2( 0, 64 )
+text = "Play"
+
+[node name="Quit" type="Button" parent="Menu"]
+margin_top = 110.0
+margin_right = 257.0
+margin_bottom = 174.0
+rect_min_size = Vector2( 0, 64 )
+text = "Quit"
+[connection signal="pressed" from="Menu/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Menu/Quit" to="." method="_on_Quit_pressed"]

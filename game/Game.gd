@@ -2,6 +2,7 @@ extends Node
 
 
 export(float, EASE) var difficulty = 1.0
+export(float, EASE) var time_difficulty = 1.0
 
 onready var hud = $InterfaceLayer/HUD
 onready var game_over_screen = $InterfaceLayer/GameOverScreen
@@ -31,8 +32,11 @@ func _on_Time_finished():
 
 
 func _on_Puzzle_tree_exited():
+	var spawn_count = $LevelLayer/Level/PuzzleSpawner.spawn_count
+	var time = $Time.time
+	time.left += 15 - (spawn_count * time_difficulty)
 	var puzzle = $LevelLayer/Level/PuzzleSpawner.spawn()
 	puzzle.connect("tree_exited", self, "_on_Puzzle_tree_exited")
 	puzzle.connect("piece_fit", self, "_on_Puzzle_piece_fit")
-	puzzle.score *= $LevelLayer/Level/PuzzleSpawner.spawn_count * difficulty
+	puzzle.score *= spawn_count * difficulty
 	puzzle.score = round(puzzle.score)

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/GlueRepair.ogg-9e8a12259c16629181ef3f0617b2015c.oggstr"
+
+[deps]
+
+source_file="res://assets/music/GlueRepair.ogg"
+dest_files=[ "res://.import/GlueRepair.ogg-9e8a12259c16629181ef3f0617b2015c.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
