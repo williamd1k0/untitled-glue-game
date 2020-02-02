@@ -3,16 +3,15 @@
 [ext_resource path="res://game/gameplay/Hands.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/grab-items/Godot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game/puzzles/vase-2/Vase2Puzzle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/puzzles/vase-3/Vase3Puzzle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/gameplay/glue/Glue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/gameplay/GlueRecharge.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/gameplay/glue/GlueSpawner.tscn" type="PackedScene" id=8]
 
 [sub_resource type="PhysicsMaterial" id=1]
-bounce = 0.05
 
 [sub_resource type="PhysicsMaterial" id=2]
-bounce = 0.6
+bounce = 0.8
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 640, 32.0001 )

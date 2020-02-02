@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://game/puzzles/vase-3/Vase3Piece.tscn" type="PackedScene" id=1]
+
+[node name="Piece" instance=ExtResource( 1 )]
+dependencies = PoolIntArray( 3 )
+
+[node name="Sprite" parent="." index="0"]
+animation = "2"
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( 10.7417, -88.7245, 65.3855, -34.3438, 5.82588, -18.7567, 48.6368, 25.0401, 22.4756, 25.5261, 10.2126, 70.8981, -58.8935, 89.3353, -61.9368, 79.8759, -64.2803, 62.0768, -63.9324, 29.138, -62.3681, 14.0017, -57.7514, -10.2157, -50.3008, -27.682, -42.1535, -39.7151, -31.5619, -49.5546, -17.2727, -58.2033, -5.4277, -63.2797, 10.9297, -68.3561, 8.79884, -72.9939, 9.1122, -85.3403 )

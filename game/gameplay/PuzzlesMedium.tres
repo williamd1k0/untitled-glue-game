@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource( 1 )
-puzzles_paths = PoolStringArray( "res://game/puzzles/plate-1/Plate1Puzzle.tscn" )
+puzzles_paths = PoolStringArray( "res://game/puzzles/plate-1/Plate1Puzzle.tscn", "res://game/puzzles/vase-1/Vase1Puzzle.tscn", "res://game/puzzles/vase-3/Vase3Puzzle.tscn" )
