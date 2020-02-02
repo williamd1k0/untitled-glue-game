@@ -21,7 +21,7 @@ export(HandMode) var hand = HandMode.LEFT
 export(float) var speed = 500
 var deadzone = 0.3
 var grabbing = false
-
+var boundaries: Rect2
 var grabbed_item: GrabItem
 
 onready var grab_position = $GrabPosition
@@ -48,7 +48,18 @@ func move(delta):
 		Input.get_action_strength(ACTIONS[hand][3]) - Input.get_action_strength(ACTIONS[hand][2]),
 		Input.get_action_strength(ACTIONS[hand][1]) - Input.get_action_strength(ACTIONS[hand][0])
 	)
-	translate(input_motion*speed*delta)
+	var motion: Vector2 = input_motion*speed*delta
+	if boundaries:
+		var bo = boundaries
+		var motion_test: Vector2 = grab_position.global_position+motion
+		if not bo.has_point(motion_test):
+			motion_test = Vector2(
+				clamp(motion_test.x, bo.position.x, bo.end.x),
+				clamp(motion_test.y, bo.position.y, bo.end.y)
+			)
+			motion = motion_test - grab_position.global_position
+			#return
+	translate(motion)
 
 
 func find_grab_item():
@@ -71,3 +82,6 @@ func release(reset_collision=true):
 		grabbed_item.release(reset_collision)
 		grabbed_item = null
 		emit_signal("release")
+
+func set_boundaries(rect):
+	boundaries = rect
