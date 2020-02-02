@@ -1,0 +1,336 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://game/gameplay/glue/GlueCharge.gd" type="Script" id=1]
+[ext_resource path="res://assets/theme/fonts/montserrat-black-48.tres" type="DynamicFont" id=2]
+[ext_resource path="res://game/gameplay/Hands.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sfx/piece_fit.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/sfx/puzzle_complete.ogg" type="AudioStream" id=5]
+[ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/puzzles/plate-1/Piece4.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/puzzles/plate-1/Piece3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/textures/joy/control_trigger_released.png" type="Texture" id=9]
+[ext_resource path="res://game/gameplay/Puzzle.gd" type="Script" id=10]
+[ext_resource path="res://assets/textures/joy/control_trigger_pressed.png" type="Texture" id=11]
+[ext_resource path="res://assets/textures/joy/joy_right_up.png" type="Texture" id=12]
+[ext_resource path="res://game/gameplay/glue/Glue.tscn" type="PackedScene" id=13]
+[ext_resource path="res://game/puzzles/plate-1/Piece1.tscn" type="PackedScene" id=14]
+[ext_resource path="res://game/puzzles/plate-1/Piece2.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/textures/joy/joy_right_down.png" type="Texture" id=16]
+[ext_resource path="res://assets/textures/plate/plate-complete.png" type="Texture" id=17]
+[ext_resource path="res://game/puzzles/plate-1/Piece5.tscn" type="PackedScene" id=18]
+[ext_resource path="res://game/Tutorial.gd" type="Script" id=19]
+[ext_resource path="res://assets/textures/joy/joy_left_down.png" type="Texture" id=20]
+[ext_resource path="res://assets/textures/joy/joy_left_up.png" type="Texture" id=21]
+[ext_resource path="res://assets/textures/joy/joy_right_left.png" type="Texture" id=22]
+[ext_resource path="res://assets/textures/joy/joy_right_right.png" type="Texture" id=23]
+[ext_resource path="res://assets/textures/joy/joy_left_right.png" type="Texture" id=24]
+[ext_resource path="res://assets/textures/joy/joy_left_left.png" type="Texture" id=25]
+[ext_resource path="res://assets/theme/main-theme.tres" type="Theme" id=26]
+[ext_resource path="res://assets/theme/fonts/montserrat-black-64.tres" type="DynamicFont" id=27]
+[ext_resource path="res://assets/textures/joy/control_trigger_pressed_flipped.png" type="Texture" id=28]
+[ext_resource path="res://assets/textures/joy/joy.png" type="Texture" id=29]
+
+[sub_resource type="PhysicsMaterial" id=1]
+bounce = 0.05
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 1 )
+max_amount = 30.0
+
+[sub_resource type="PhysicsMaterial" id=3]
+bounce = 0.7
+
+[sub_resource type="PhysicsMaterial" id=4]
+
+[sub_resource type="Animation" id=5]
+resource_name = "completed"
+length = 1.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("RefPosition:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 1.3 ),
+"transitions": PoolRealArray( 1, 0.196146, 1 ),
+"update": 0,
+"values": [ Vector2( 640, 654 ), Vector2( 688, 656 ), Vector2( -456, 656 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SFXComplete")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 5 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "hint"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RefPosition:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 2.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.117647 ) ]
+}
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 28 ), ExtResource( 20 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "move_grab",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "grab",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 20 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "move",
+"speed": 4.0
+} ]
+
+[node name="Tutorial" type="Node"]
+script = ExtResource( 19 )
+
+[node name="LevelLayer" type="CanvasLayer" parent="."]
+
+[node name="Level" type="Node2D" parent="LevelLayer"]
+
+[node name="Background" parent="LevelLayer/Level" instance=ExtResource( 6 )]
+
+[node name="Control" type="ColorRect" parent="LevelLayer/Level"]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.698039 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Glue" parent="LevelLayer/Level" instance=ExtResource( 13 )]
+position = Vector2( 641.5, 520 )
+physics_material_override = SubResource( 1 )
+charge = SubResource( 2 )
+squeeze_ratio = 0.0
+
+[node name="Hands" parent="LevelLayer/Level" instance=ExtResource( 3 )]
+
+[node name="LeftHand" parent="LevelLayer/Level/Hands" index="0"]
+position = Vector2( 264, 504 )
+
+[node name="RightHand" parent="LevelLayer/Level/Hands" index="1"]
+position = Vector2( 576, 440 )
+
+[node name="LeftArm" parent="LevelLayer/Level/Hands" index="2"]
+position = Vector2( 0, 840 )
+
+[node name="RightArm" parent="LevelLayer/Level/Hands" index="3"]
+position = Vector2( 832, 792 )
+
+[node name="Boundaries" type="StaticBody2D" parent="LevelLayer/Level"]
+physics_material_override = SubResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelLayer/Level/Boundaries"]
+polygon = PoolVector2Array( 0, 0, 0, 656, 1280, 656, 1280, 0, 1344, 0, 1344, 704, -64, 712, -64, 0 )
+
+[node name="Puzzle" type="Node2D" parent="LevelLayer/Level"]
+position = Vector2( 1058.16, 8 )
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 609.725 ]
+}
+
+[node name="Pieces" type="Position2D" parent="LevelLayer/Level/Puzzle"]
+position = Vector2( -4.82434, 642.416 )
+__meta__ = {
+"_gizmo_extents_": 640.0
+}
+
+[node name="Piece1" parent="LevelLayer/Level/Puzzle/Pieces" instance=ExtResource( 14 )]
+position = Vector2( -131, -40 )
+physics_material_override = SubResource( 4 )
+auto_glue = true
+
+[node name="Piece2" parent="LevelLayer/Level/Puzzle/Pieces" instance=ExtResource( 15 )]
+position = Vector2( 4, -31 )
+physics_material_override = SubResource( 4 )
+auto_glue = true
+
+[node name="Piece3" parent="LevelLayer/Level/Puzzle/Pieces" instance=ExtResource( 8 )]
+position = Vector2( -22, -54 )
+physics_material_override = SubResource( 4 )
+
+[node name="Piece4" parent="LevelLayer/Level/Puzzle/Pieces" instance=ExtResource( 7 )]
+position = Vector2( 99.338, -40.4359 )
+physics_material_override = SubResource( 4 )
+auto_glue = true
+
+[node name="Piece5" parent="LevelLayer/Level/Puzzle/Pieces" instance=ExtResource( 18 )]
+position = Vector2( 143.709, -53.5324 )
+physics_material_override = SubResource( 4 )
+auto_glue = true
+
+[node name="DropPos" type="Position2D" parent="LevelLayer/Level/Puzzle"]
+position = Vector2( -2.16016, 537.615 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LevelLayer/Level/Puzzle"]
+autoplay = "hint"
+anims/completed = SubResource( 5 )
+anims/hint = SubResource( 6 )
+
+[node name="RefPosition" type="Position2D" parent="LevelLayer/Level/Puzzle"]
+show_behind_parent = true
+position = Vector2( 640, 654 )
+
+[node name="PuzzleRef" type="Sprite" parent="LevelLayer/Level/Puzzle/RefPosition"]
+show_behind_parent = true
+position = Vector2( 0, -40.4359 )
+texture = ExtResource( 17 )
+
+[node name="SFXPieceFit" type="AudioStreamPlayer" parent="LevelLayer/Level/Puzzle"]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="SFXComplete" type="AudioStreamPlayer" parent="LevelLayer/Level/Puzzle"]
+stream = ExtResource( 5 )
+volume_db = -4.0
+bus = "Jingles"
+
+[node name="TutorialPieceReference" type="Position2D" parent="."]
+position = Vector2( 192, 619.416 )
+
+[node name="TutorialLayer" type="CanvasLayer" parent="."]
+
+[node name="Instructions" type="Control" parent="TutorialLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Congratulations" type="Control" parent="TutorialLayer/Instructions"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" type="ColorRect" parent="TutorialLayer/Instructions/Congratulations"]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 0.698039 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TutorialLayer/Instructions/Congratulations"]
+anchor_right = 1.0
+margin_bottom = 368.0
+custom_fonts/font = ExtResource( 27 )
+text = "Congratulations, now get to work already!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayButton" type="Button" parent="TutorialLayer/Instructions/Congratulations"]
+margin_left = 568.0
+margin_top = 520.0
+margin_right = 712.0
+margin_bottom = 568.0
+text = "Play"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TutorialLayer/Instructions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 40.0
+margin_bottom = -544.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TutorialLayer/Instructions/HBoxContainer"]
+margin_right = 424.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TutorialLayer/Instructions/HBoxContainer/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Grab it!"
+align = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TutorialLayer/Instructions/HBoxContainer"]
+margin_left = 428.0
+margin_right = 852.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TutorialLayer/Instructions/HBoxContainer/VBoxContainer2"]
+margin_right = 424.0
+margin_bottom = 123.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Glue it!
+"
+align = 1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="TutorialLayer/Instructions/HBoxContainer/VBoxContainer2"]
+position = Vector2( 213.5, 152 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 7 )
+animation = "move_grab"
+frame = 10
+playing = true
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="TutorialLayer/Instructions/HBoxContainer"]
+margin_left = 856.0
+margin_right = 1280.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="TutorialLayer/Instructions/HBoxContainer/VBoxContainer3"]
+margin_right = 424.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Fix it!"
+align = 1
+[connection signal="tree_exited" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_tree_exited"]
+[connection signal="animation_finished" from="LevelLayer/Level/Puzzle/AnimationPlayer" to="LevelLayer/Level/Puzzle" method="_on_AnimationPlayer_animation_finished"]
+[connection signal="pressed" from="TutorialLayer/Instructions/Congratulations/PlayButton" to="." method="_on_PlayButton_pressed"]
+
+[editable path="LevelLayer/Level/Hands"]
