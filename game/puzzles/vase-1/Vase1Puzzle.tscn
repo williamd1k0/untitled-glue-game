@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/gameplay/Puzzle.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/puzzles/vase-1/Piece2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://game/puzzles/vase-1/Piece5.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/puzzles/vase-1/Piece1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://game/puzzles/vase-1/Piece3.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/puzzles/vase-1/Piece4.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/textures/vase/vase_complete.png" type="Texture" id=7]
+
+[node name="Puzzle" instance=ExtResource( 1 )]
+score = 200
+
+[node name="Piece1" parent="Pieces" index="0" instance=ExtResource( 4 )]
+position = Vector2( 36, -188 )
+
+[node name="Piece2" parent="Pieces" index="1" instance=ExtResource( 2 )]
+position = Vector2( -30, -244 )
+
+[node name="Piece3" parent="Pieces" index="2" instance=ExtResource( 5 )]
+position = Vector2( -27, -138 )
+
+[node name="Piece4" parent="Pieces" index="3" instance=ExtResource( 6 )]
+position = Vector2( -29, -43 )
+
+[node name="Piece5" parent="Pieces" index="4" instance=ExtResource( 3 )]
+position = Vector2( 33, -46 )
+
+[node name="PuzzleRef" parent="RefPosition" index="0"]
+position = Vector2( 0, -154 )
+texture = ExtResource( 7 )

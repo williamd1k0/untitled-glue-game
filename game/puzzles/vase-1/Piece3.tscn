@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/puzzles/vase-1/Vase1Piece.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Animation" id=1]
+resource_name = "0"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[node name="Piece" instance=ExtResource( 1 )]
+dependencies = PoolIntArray( 4, 5 )
+
+[node name="Sprite" parent="." index="0"]
+animation = "3"
+
+[node name="CollisionPolygon2D" parent="." index="2"]
+polygon = PoolVector2Array( -47.3549, -69.5794, -8.05739, -47.2054, 17.8061, -73.7682, 36.5427, -41.4241, 10.0603, -25.3044, 59.8845, -12.5874, 37.0661, 26.5091, 65.5373, 42.9429, 17.7015, 71.1001, 18.2248, 62.0981, -25.7381, 73.6122, -2.08188, 49.328, -49.217, 50.3782, -64.0285, -35.8817, -63.7887, -49.2727, -55.6242, -63.613 )
+
+[node name="Animator" parent="." index="3"]
+anims/0 = SubResource( 1 )
