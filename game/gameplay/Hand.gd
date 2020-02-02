@@ -48,10 +48,17 @@ func move(delta):
 		Input.get_action_strength(ACTIONS[hand][3]) - Input.get_action_strength(ACTIONS[hand][2]),
 		Input.get_action_strength(ACTIONS[hand][1]) - Input.get_action_strength(ACTIONS[hand][0])
 	)
-	var motion = input_motion*speed*delta
+	var motion: Vector2 = input_motion*speed*delta
 	if boundaries:
-		if not boundaries.has_point(grab_position.global_position+motion):
-			return
+		var bo = boundaries
+		var motion_test: Vector2 = grab_position.global_position+motion
+		if not bo.has_point(motion_test):
+			motion_test = Vector2(
+				clamp(motion_test.x, bo.position.x, bo.end.x),
+				clamp(motion_test.y, bo.position.y, bo.end.y)
+			)
+			motion = motion_test - grab_position.global_position
+			#return
 	translate(motion)
 
 
