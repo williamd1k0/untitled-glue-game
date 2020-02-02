@@ -4,6 +4,7 @@ extends GrabItem
 const GLUE_MASK = 4
 
 export(PoolIntArray) var dependencies
+export(bool) var auto_glue = false
 const glue_consume = 0.5
 const glue_max = 6
 var glue = 0
@@ -25,7 +26,7 @@ func _process(delta):
 
 
 func has_glue():
-	return glue > 0
+	return glue > 0 or auto_glue
 
 func get_id():
 	return int(sprite.animation)
