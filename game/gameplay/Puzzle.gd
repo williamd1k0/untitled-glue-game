@@ -2,9 +2,9 @@ extends Node2D
 
 signal piece_fit(piece_position, fit_score)
 
-const PALETTE: Gradient = preload("res://game/puzzles/piece-colors.tres")
 var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 
+export(Gradient) var palette: Gradient = preload("res://game/puzzles/piece-colors.tres")
 export(int) var score = 100
 var fit_pieces = []
 var pieces_total = 0
@@ -17,7 +17,7 @@ func _ready():
 	add_child(tween)
 	tween.connect("tween_all_completed", self, "_on_Tween_all_completed")
 	RNG.randomize()
-	puzzle_color = PALETTE.colors[RNG.randi() % PALETTE.colors.size()]
+	puzzle_color = palette.colors[RNG.randi() % palette.colors.size()]
 	create_fit_areas()
 	$Pieces.position = $DropPos.position
 
