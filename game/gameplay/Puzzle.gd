@@ -1,5 +1,9 @@
 extends Node2D
 
+signal piece_fit(piece_position, piece_score)
+
+
+export(float) var score = 200
 var fit_pieces = []
 var pieces_total = 0
 var fit_area := Node2D.new()
@@ -42,7 +46,9 @@ func fit_piece(piece: Piece):
 		0.2, Tween.TRANS_BACK, Tween.EASE_IN
 	)
 	tween.start()
+	emit_signal("piece_fit", piece_pos, score)
 	piece.destroy()
+
 
 func check_piece(piece: Piece):
 	if piece.has_glue() and not piece.has_grabber():

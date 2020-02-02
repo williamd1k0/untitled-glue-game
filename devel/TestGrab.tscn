@@ -1,18 +1,18 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://game/gameplay/Hands.tscn" type="PackedScene" id=1]
 [ext_resource path="res://game/gameplay/grab-items/Godot.tscn" type="PackedScene" id=2]
 [ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=3]
-[ext_resource path="res://game/interface/Interface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/gameplay/grab-items/Glue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://game/gameplay/grab-items/plate-1/Plate1Puzzle.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/gameplay/GlueRecharge.tscn" type="PackedScene" id=7]
 [ext_resource path="res://game/gameplay/glue/GlueSpawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://devel/LevelTime.gd" type="Script" id=9]
-[ext_resource path="res://game/gameplay/Time.tres" type="Resource" id=10]
 
 [sub_resource type="PhysicsMaterial" id=1]
-bounce = 1.0
+bounce = 0.05
+
+[sub_resource type="PhysicsMaterial" id=4]
+bounce = 0.6
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 640, 32.0001 )
@@ -21,10 +21,6 @@ extents = Vector2( 640, 32.0001 )
 extents = Vector2( 28.0006, 421.207 )
 
 [node name="TestGrab" type="Node2D"]
-
-[node name="LevelTime" type="Node" parent="."]
-script = ExtResource( 9 )
-time = ExtResource( 10 )
 
 [node name="GameLayer" type="CanvasLayer" parent="."]
 layer = 0
@@ -35,11 +31,12 @@ layer = 0
 
 [node name="Glue" parent="GameLayer" instance=ExtResource( 5 )]
 position = Vector2( 1115.66, -159.002 )
+physics_material_override = SubResource( 1 )
 
 [node name="Hands" parent="GameLayer" instance=ExtResource( 1 )]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="GameLayer"]
-physics_material_override = SubResource( 1 )
+physics_material_override = SubResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -57,10 +54,6 @@ position = Vector2( 1288, 328 )
 shape = SubResource( 3 )
 
 [node name="Puzzle" parent="GameLayer" instance=ExtResource( 6 )]
-
-[node name="InterfaceLayer" type="CanvasLayer" parent="."]
-
-[node name="Interface" parent="InterfaceLayer" instance=ExtResource( 4 )]
 
 [node name="GlueRecharger" parent="." instance=ExtResource( 7 )]
 
