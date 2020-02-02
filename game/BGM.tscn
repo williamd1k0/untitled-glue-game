@@ -5,7 +5,7 @@
 [ext_resource path="res://game/high_pass.tres" type="AudioEffectHighPassFilter" id=3]
 
 [sub_resource type="Animation" id=1]
-resource_name = "game_over"
+resource_name = "high_pass"
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:high_pass:cutoff_hz")
@@ -43,4 +43,4 @@ script = ExtResource( 2 )
 high_pass = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/game_over = SubResource( 1 )
+anims/high_pass = SubResource( 1 )
