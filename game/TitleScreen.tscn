@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/theme/main-theme.tres" type="Theme" id=1]
 [ext_resource path="res://game/TitleScreen.gd" type="Script" id=2]
 [ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/theme/fonts/Montserrat-Black.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 8
+outline_color = Color( 0.498039, 0.541176, 0.862745, 1 )
+font_data = ExtResource( 4 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -13,16 +20,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 game_scene = "res://game/Tutorial.tscn"
+credits_scene = "res://game/Credits.tscn"
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -600.0
+margin_top = 16.3245
+margin_bottom = -583.676
+custom_fonts/font = SubResource( 1 )
 text = "Untitled Glue Game"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchor_right = 1.0
@@ -38,17 +51,24 @@ __meta__ = {
 }
 
 [node name="Play" type="Button" parent="Menu"]
-margin_top = 33.0
 margin_right = 257.0
-margin_bottom = 97.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 0, 64 )
 text = "Play"
 
-[node name="Quit" type="Button" parent="Menu"]
-margin_top = 110.0
+[node name="Credits" type="Button" parent="Menu"]
+margin_top = 77.0
 margin_right = 257.0
-margin_bottom = 174.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 0, 64 )
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Menu"]
+margin_top = 154.0
+margin_right = 257.0
+margin_bottom = 218.0
 rect_min_size = Vector2( 0, 64 )
 text = "Quit"
 [connection signal="pressed" from="Menu/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Menu/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_Quit_pressed"]
