@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/theme/main-theme.tres" type="Theme" id=1]
 [ext_resource path="res://game/TitleScreen.gd" type="Script" id=2]
+[ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=3]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -12,6 +13,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 game_scene = "res://game/Game.tscn"
+
+[node name="Background" parent="." instance=ExtResource( 3 )]
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
@@ -25,9 +28,9 @@ valign = 1
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 512.0
-margin_top = 479.0
+margin_top = 439.0
 margin_right = -511.0
-margin_bottom = -33.0
+margin_bottom = -73.0
 custom_constants/separation = 13
 alignment = 1
 __meta__ = {
