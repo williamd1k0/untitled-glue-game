@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/textures/clock-empty.png" type="Texture" id=1]
 [ext_resource path="res://assets/textures/clock-full.png" type="Texture" id=2]
-[ext_resource path="res://game/interface/fonts/montserrat-black-48.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/theme/fonts/montserrat-black-48.tres" type="DynamicFont" id=3]
 [ext_resource path="res://game/interface/HUD.gd" type="Script" id=4]
 [ext_resource path="res://game/gameplay/glue/GlueCharge.tres" type="Resource" id=5]
 [ext_resource path="res://game/gameplay/Time.tres" type="Resource" id=6]
