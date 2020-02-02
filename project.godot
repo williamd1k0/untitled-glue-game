@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GGJ2020"
-run/main_scene="res://game/Game.tscn"
+run/main_scene="res://game/TitleScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
