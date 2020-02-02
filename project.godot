@@ -9,10 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "RigidBody2D",
+"base": "Reference",
 "class": "GrabItem",
 "language": "GDScript",
-"path": "res://game/gameplay/GrabItem.gd"
+"path": "res://game/gameplay/grab-items/GrabItem.gd"
 }, {
 "base": "Area2D",
 "class": "Hand",
