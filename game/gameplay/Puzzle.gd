@@ -18,7 +18,6 @@ func _ready():
 	tween.connect("tween_all_completed", self, "_on_Tween_all_completed")
 	RNG.randomize()
 	puzzle_color = PALETTE.colors[RNG.randi() % PALETTE.colors.size()]
-	$RefPosition/PuzzleRef.modulate = puzzle_color
 	create_fit_areas()
 	$Pieces.position = $DropPos.position
 
@@ -80,6 +79,7 @@ func _on_Tween_all_completed():
 	if fit_pieces.size() == pieces_total:
 		#fit_area.z_index -= 1
 		yield(get_tree().create_timer(0.3), "timeout")
+		$RefPosition.modulate = puzzle_color
 		fit_area.hide()
 		$AnimationPlayer.play("completed")
 
@@ -87,4 +87,3 @@ func _on_Tween_all_completed():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "completed":
 		queue_free()
-
