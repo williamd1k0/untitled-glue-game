@@ -66,8 +66,8 @@ func grab():
 		print('grab item')
 		emit_signal("grab")
 
-func release():
+func release(reset_collision=true):
 	if grabbed_item:
-		grabbed_item.release()
+		grabbed_item.release(reset_collision)
 		grabbed_item = null
 		emit_signal("release")

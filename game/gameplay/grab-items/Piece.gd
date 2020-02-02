@@ -38,8 +38,8 @@ func grab(hand):
 	.grab(hand)
 	collision_layer |= GLUE_MASK
 
-func release():
-	.release()
+func release(reset_collision=true):
+	.release(reset_collision)
 	collision_layer &= ~GLUE_MASK
 
 func destroy():

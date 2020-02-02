@@ -26,7 +26,7 @@ func _on_charge_depleted():
 	collision_layer = 0
 	collision_mask = 0
 	if grabber != null:
-		grabber.release()
+		grabber.release(false)
 
 
 func _on_VisibilityNotifier2D_screen_exited():

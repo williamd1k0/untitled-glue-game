@@ -35,7 +35,6 @@ tracks/0/keys = {
 [node name="Piece" instance=ExtResource( 1 )]
 material = ExtResource( 3 )
 script = ExtResource( 2 )
-glue_consume = 1.0
 
 [node name="Sprite" parent="." index="0"]
 material = ExtResource( 3 )
