@@ -2,24 +2,30 @@ extends Node2D
 
 signal piece_fit(piece_position, fit_score)
 
+const PALETTE: Gradient = preload("res://game/puzzles/piece-colors.tres")
+var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 
 export(float) var score = 200
 var fit_pieces = []
 var pieces_total = 0
 var fit_area := Node2D.new()
 var tween := Tween.new()
+var puzzle_color: Color
 
 func _ready():
 	add_child(fit_area)
 	add_child(tween)
 	tween.connect("tween_all_completed", self, "_on_Tween_all_completed")
+	RNG.randomize()
+	puzzle_color = PALETTE.colors[RNG.randi() % PALETTE.colors.size()]
+	$RefPosition/PuzzleRef.modulate = puzzle_color
 	create_fit_areas()
 	$Pieces.position = $DropPos.position
 
 func create_fit_areas():
 	for piece in $Pieces.get_children():
 		pieces_total += 1
-		prints(piece.get_id(), piece.position)
+		piece.tint(puzzle_color)
 		var area := preload("res://game/gameplay/FitArea.tscn").instance()
 		fit_area.add_child(area)
 		area.global_position = piece.global_position
@@ -72,14 +78,13 @@ func _on_FitArea_body_entered(body, piece_id):
 
 func _on_Tween_all_completed():
 	if fit_pieces.size() == pieces_total:
-		$AnimationPlayer.play("done")
+		#fit_area.z_index -= 1
+		yield(get_tree().create_timer(0.3), "timeout")
+		fit_area.hide()
+		$AnimationPlayer.play("completed")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "done":
-		fit_area.z_index -= 1
-		fit_area.hide()
-		$AnimationPlayer.play("completed")
-	elif anim_name == "completed":
+	if anim_name == "completed":
 		queue_free()
 
