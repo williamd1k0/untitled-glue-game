@@ -13,6 +13,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 game_scene = "res://game/Tutorial.tscn"
+credits_scene = "res://game/Credits.tscn"
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
 
@@ -38,17 +39,24 @@ __meta__ = {
 }
 
 [node name="Play" type="Button" parent="Menu"]
-margin_top = 33.0
 margin_right = 257.0
-margin_bottom = 97.0
+margin_bottom = 64.0
 rect_min_size = Vector2( 0, 64 )
 text = "Play"
 
-[node name="Quit" type="Button" parent="Menu"]
-margin_top = 110.0
+[node name="Credits" type="Button" parent="Menu"]
+margin_top = 77.0
 margin_right = 257.0
-margin_bottom = 174.0
+margin_bottom = 141.0
+rect_min_size = Vector2( 0, 64 )
+text = "Credits"
+
+[node name="Quit" type="Button" parent="Menu"]
+margin_top = 154.0
+margin_right = 257.0
+margin_bottom = 218.0
 rect_min_size = Vector2( 0, 64 )
 text = "Quit"
 [connection signal="pressed" from="Menu/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Menu/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="Menu/Quit" to="." method="_on_Quit_pressed"]
