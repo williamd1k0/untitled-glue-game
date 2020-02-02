@@ -1,0 +1,4 @@
+[gd_resource type="AudioEffectHighPassFilter" format=2]
+
+[resource]
+resource_name = "HighPassFilter"

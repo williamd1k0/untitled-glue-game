@@ -20,7 +20,7 @@ func _on_Puzzle_piece_fit(piece_position, fit_score):
 
 
 func _on_Time_finished():
-	get_tree().paused = true
+	BGM.start_effect("game_over")
 	game_over_screen.set_final_score(score)
 	game_over_screen.show()
-	
+	get_tree().paused = true

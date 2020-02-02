@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://game/GlueRepair.ogg" type="AudioStream" id=1]
+[ext_resource path="res://game/BGM.gd" type="Script" id=2]
+[ext_resource path="res://game/high_pass.tres" type="AudioEffectHighPassFilter" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "game_over"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:high_pass:cutoff_hz")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.0, 4000.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "high_pass", true ],
+"method": "enable_effect"
+} ]
+}
+
+[node name="BGM" type="AudioStreamPlayer"]
+pause_mode = 2
+stream = ExtResource( 1 )
+autoplay = true
+bus = "BGM"
+script = ExtResource( 2 )
+high_pass = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/game_over = SubResource( 1 )
