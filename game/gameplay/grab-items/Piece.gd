@@ -7,6 +7,7 @@ export(PoolIntArray) var dependencies
 const glue_consume = 0.5
 const glue_max = 6
 var glue = 0
+var glued = false
 
 onready var sprite = $Sprite
 
@@ -17,6 +18,8 @@ func _process(delta):
 	if has_node("Sprite"):
 		if glue > 0:
 			glue = max(0, glue - glue_consume * delta)
+		else:
+			glued = false
 		var shader: ShaderMaterial = sprite.material
 		shader.set_shader_param('glue_amount', lerp(0, glue_max, glue))
 
@@ -32,6 +35,9 @@ func release_sprite():
 	return sprite
 
 func add_glue(amount):
+	if not glued:
+		$SFX.play()
+		glued = true
 	glue = min(1, glue+amount)
 
 func grab(hand):

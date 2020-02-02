@@ -10,6 +10,7 @@ func _ready():
 func start_effect(effect):
 	if is_effect_enabled(effect):
 		return
+	enable_effect(effect, true)
 	$AnimationPlayer.play(effect)
 
 

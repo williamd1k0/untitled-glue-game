@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://game/gameplay/Puzzle.gd" type="Script" id=1]
+[ext_resource path="res://assets/sound_effects/piece_fit.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sound_effects/puzzle_complete.ogg" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "completed"
@@ -17,6 +19,20 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 0.196146, 1 ),
 "update": 0,
 "values": [ Vector2( 640, 654 ), Vector2( 688, 656 ), Vector2( -456, 656 ) ]
+}
+tracks/1/type = "audio"
+tracks/1/path = NodePath("SFXComplete")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=2]
@@ -62,4 +78,13 @@ position = Vector2( 640, 654 )
 
 [node name="PuzzleRef" type="Sprite" parent="RefPosition"]
 show_behind_parent = true
+
+[node name="SFXPieceFit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "SFX"
+
+[node name="SFXComplete" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -4.0
+bus = "Jingles"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

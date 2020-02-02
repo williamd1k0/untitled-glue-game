@@ -1,6 +1,12 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+[gd_resource type="AudioBusLayout" load_steps=3 format=2]
 
 [ext_resource path="res://game/high_pass.tres" type="AudioEffectHighPassFilter" id=1]
+
+[sub_resource type="AudioEffectReverb" id=1]
+resource_name = "Reverb"
+room_size = 0.35
+damping = 0.75
+wet = 0.4
 
 [resource]
 bus/1/name = "BGM"
@@ -11,3 +17,17 @@ bus/1/volume_db = 0.0
 bus/1/send = "Master"
 bus/1/effect/0/effect = ExtResource( 1 )
 bus/1/effect/0/enabled = false
+bus/2/name = "SFX"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = "Master"
+bus/3/name = "Jingles"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -10.5236
+bus/3/send = "Master"
+bus/3/effect/0/effect = SubResource( 1 )
+bus/3/effect/0/enabled = true

@@ -23,6 +23,7 @@ func _on_Puzzle_piece_fit(piece_position, fit_score):
 
 
 func _on_Time_finished():
+	$SFXTimeOut.play()
 	BGM.start_effect("high_pass")
 	game_over_screen.set_final_score(score)
 	game_over_screen.show()
