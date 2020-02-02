@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/theme/main-theme.tres" type="Theme" id=1]
 [ext_resource path="res://game/TitleScreen.gd" type="Script" id=2]
 [ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/theme/fonts/Montserrat-Black.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+outline_size = 8
+outline_color = Color( 0.498039, 0.541176, 0.862745, 1 )
+font_data = ExtResource( 4 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -20,10 +27,15 @@ credits_scene = "res://game/Credits.tscn"
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = -600.0
+margin_top = 16.3245
+margin_bottom = -583.676
+custom_fonts/font = SubResource( 1 )
 text = "Untitled Glue Game"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Menu" type="VBoxContainer" parent="."]
 anchor_right = 1.0
