@@ -6,6 +6,7 @@ export (PackedScene) var pop_label_scene
 
 onready var glue_bar = $GlueAmountBar
 onready var clock = $TimeProgressBar
+onready var score_label = $Label
 
 func _ready():
 	glue_bar.max_value = glue_charge.max_amount
@@ -30,3 +31,7 @@ func create_pop_label(label_position, label_text):
 	pop_label.text = "%s" % label_text
 	add_child(pop_label)
 	pop_label.rect_position = label_position
+
+
+func set_score_text(text):
+	score_label.text = "%s" % text
