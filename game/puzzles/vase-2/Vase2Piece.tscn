@@ -8,3 +8,7 @@
 [node name="Sprite" parent="." index="0"]
 frames = ExtResource( 2 )
 animation = "0"
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = true
+shape = null
