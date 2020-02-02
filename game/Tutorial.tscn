@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://game/gameplay/glue/GlueCharge.gd" type="Script" id=1]
 [ext_resource path="res://assets/theme/fonts/montserrat-black-48.tres" type="DynamicFont" id=2]
@@ -92,11 +92,6 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 28 ), ExtResource( 20 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "move_grab",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "grab",
@@ -106,7 +101,27 @@ animations = [ {
 "loop": true,
 "name": "move",
 "speed": 4.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 28 ), ExtResource( 20 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "move_grab",
+"speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=8]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
 
 [node name="Tutorial" type="Node"]
 script = ExtResource( 19 )
@@ -225,6 +240,7 @@ position = Vector2( 192, 619.416 )
 [node name="Instructions" type="Control" parent="TutorialLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 theme = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -235,6 +251,7 @@ pause_mode = 2
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -271,6 +288,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 40.0
 margin_bottom = -544.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -312,7 +330,7 @@ position = Vector2( 213.5, 152 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 7 )
 animation = "move_grab"
-frame = 10
+frame = 2
 playing = true
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="TutorialLayer/Instructions/HBoxContainer"]
@@ -329,6 +347,20 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Fix it!"
 align = 1
+
+[node name="Fade" type="ColorRect" parent="TutorialLayer/Instructions"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialLayer/Instructions/Fade"]
+autoplay = "fade"
+anims/fade = SubResource( 8 )
 [connection signal="tree_exited" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_tree_exited"]
 [connection signal="animation_finished" from="LevelLayer/Level/Puzzle/AnimationPlayer" to="LevelLayer/Level/Puzzle" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="TutorialLayer/Instructions/Congratulations/PlayButton" to="." method="_on_PlayButton_pressed"]

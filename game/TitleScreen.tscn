@@ -12,7 +12,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-game_scene = "res://game/Game.tscn"
+game_scene = "res://game/Tutorial.tscn"
 
 [node name="Background" parent="." instance=ExtResource( 3 )]
 

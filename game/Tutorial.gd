@@ -16,5 +16,8 @@ func _on_Puzzle_tree_exited():
 
 
 func _on_PlayButton_pressed():
+	var animator = $TutorialLayer/Instructions/Fade/AnimationPlayer
+	animator.play_backwards("fade")
+	yield(animator, "animation_finished")
 	get_tree().paused = false
 	get_tree().change_scene("res://game/Game.tscn")
