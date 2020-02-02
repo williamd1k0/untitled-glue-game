@@ -48,3 +48,6 @@ func destroy():
 	collision_mask = 0
 	yield(get_tree().create_timer(0.5), "timeout")
 	queue_free()
+
+func tint(color: Color):
+	$Sprite.modulate = color
