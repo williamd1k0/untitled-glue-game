@@ -8,14 +8,9 @@ enum HandMode {
 	LEFT, RIGHT
 }
 
-enum {
-	HORIZONTAL,
-	VERTICAL,
-	TRIGGER,
-}
-const JOYMAP = {
-	HandMode.LEFT: [JOY_AXIS_0, JOY_AXIS_1, JOY_AXIS_6],
-	HandMode.RIGHT: [JOY_AXIS_2, JOY_AXIS_3, JOY_AXIS_7],
+const ACTIONS = {
+	HandMode.LEFT: ["left_up", "left_down", "left_left", "left_right", "left_grab"],
+	HandMode.RIGHT: ["right_up", "right_down", "right_left", "right_right", "right_grab"]
 }
 const ANIM_MAP = {
 	false: 'idle',
@@ -33,7 +28,12 @@ onready var grab_position = $GrabPosition
 
 
 func _physics_process(delta):
-	var grab := Input.get_joy_axis(0, JOYMAP[hand][TRIGGER]) >= 0.9
+	detect_grab()
+	move(delta)
+
+
+func detect_grab():
+	var grab := Input.is_action_pressed(ACTIONS[hand][4])
 	if grabbing != grab:
 		grabbing = grab
 		$Animator.play(ANIM_MAP[grabbing])
@@ -42,15 +42,14 @@ func _physics_process(delta):
 		else:
 			release()
 
+
+func move(delta):
 	var input_motion := Vector2(
-		Input.get_joy_axis(0, JOYMAP[hand][HORIZONTAL]),
-		Input.get_joy_axis(0, JOYMAP[hand][VERTICAL])
+		Input.get_action_strength(ACTIONS[hand][3]) - Input.get_action_strength(ACTIONS[hand][2]),
+		Input.get_action_strength(ACTIONS[hand][1]) - Input.get_action_strength(ACTIONS[hand][0])
 	)
-	if abs(input_motion.x) < deadzone:
-		input_motion.x = 0
-	if abs(input_motion.y) < deadzone:
-		input_motion.y = 0
 	translate(input_motion*speed*delta)
+
 
 func find_grab_item():
 	var bodies = get_overlapping_bodies()
