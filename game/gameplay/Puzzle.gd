@@ -71,6 +71,7 @@ func _on_Tween_all_completed():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "done":
+		fit_area.z_index -= 1
 		fit_area.hide()
 		$AnimationPlayer.play("completed")
 	elif anim_name == "completed":
