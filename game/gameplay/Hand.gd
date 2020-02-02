@@ -58,7 +58,6 @@ func move(delta):
 				clamp(motion_test.y, bo.position.y, bo.end.y)
 			)
 			motion = motion_test - grab_position.global_position
-			#return
 	translate(motion)
 
 

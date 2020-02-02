@@ -2,7 +2,7 @@ extends Control
 
 
 func set_final_score(score):
-	$FinalScoreLabel.text = "Score: %s" % score
+	$FinalScoreLabel.text = "Score: %d" % score
 
 
 func _on_RetryButton_pressed():

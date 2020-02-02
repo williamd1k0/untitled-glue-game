@@ -1,15 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://game/interface/fonts/Montserrat-Black.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/theme/fonts/montserrat-black-48-red-outline.tres" type="DynamicFont" id=1]
 [ext_resource path="res://game/interface/PopLabel.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=1]
-size = 48
-outline_size = 4
-outline_color = Color( 0.984314, 0.243137, 0.243137, 1 )
-font_data = ExtResource( 1 )
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 length = 0.65
 step = 0.05
 tracks/0/type = "value"
@@ -45,7 +39,7 @@ margin_top = -32.0
 margin_right = -1192.0
 margin_bottom = -688.0
 rect_pivot_offset = Vector2( 88, 32 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = ExtResource( 1 )
 custom_constants/shadow_as_outline = 0
 text = "999"
 align = 1
@@ -57,5 +51,5 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "pop"
-anims/pop = SubResource( 2 )
+anims/pop = SubResource( 1 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
