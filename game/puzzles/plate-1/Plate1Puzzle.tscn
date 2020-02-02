@@ -8,7 +8,6 @@
 [ext_resource path="res://game/puzzles/plate-1/Piece4.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/puzzles/plate-1/Piece5.tscn" type="PackedScene" id=7]
 
-
 [sub_resource type="PhysicsMaterial" id=1]
 
 [node name="Puzzle" instance=ExtResource( 1 )]

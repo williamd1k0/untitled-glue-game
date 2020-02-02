@@ -1,17 +1,9 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://game/gameplay/Time.tres" type="Resource" id=1]
 [ext_resource path="res://devel/GameTime.gd" type="Script" id=2]
-[ext_resource path="res://game/gameplay/glue/GlueCharge.tres" type="Resource" id=3]
-[ext_resource path="res://game/interface/PopLabel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://game/interface/Interface.gd" type="Script" id=5]
-[ext_resource path="res://game/interface/Interface.tscn" type="PackedScene" id=6]
-[ext_resource path="res://game/gameplay/grab-items/GrabItem.gd" type="Script" id=7]
-[ext_resource path="res://game/gameplay/glue/Glue.gd" type="Script" id=8]
-[ext_resource path="res://game/gameplay/GlueRecharge.gd" type="Script" id=9]
-[ext_resource path="res://game/gameplay/glue/GlueSpawner.gd" type="Script" id=10]
-[ext_resource path="res://game/gameplay/Puzzle.gd" type="Script" id=11]
-[ext_resource path="res://assets/textures/background.png" type="Texture" id=12]
+[ext_resource path="res://game/interface/GameOverScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/interface/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/gameplay/glue/Glue.tscn" type="PackedScene" id=13]
 [ext_resource path="res://game/gameplay/GlueRecharge.tscn" type="PackedScene" id=14]
 [ext_resource path="res://game/puzzles/plate-1/Plate1Puzzle.tscn" type="PackedScene" id=15]
@@ -37,32 +29,22 @@ script = ExtResource( 20 )
 script = ExtResource( 2 )
 time = ExtResource( 1 )
 
-[node name="GlueRecharger" type="Node" parent="." instance=ExtResource( 14 )]
-script = ExtResource( 9 )
-glue_charge = ExtResource( 3 )
+[node name="GlueRecharger" parent="." instance=ExtResource( 14 )]
 
 [node name="LevelLayer" type="CanvasLayer" parent="."]
 
 [node name="Level" type="Node2D" parent="LevelLayer"]
 
-[node name="Background" type="Sprite" parent="LevelLayer/Level" instance=ExtResource( 19 )]
-texture = ExtResource( 12 )
-centered = false
+[node name="Background" parent="LevelLayer/Level" instance=ExtResource( 19 )]
 
-[node name="Godot" type="RigidBody2D" parent="LevelLayer/Level" instance=ExtResource( 16 )]
+[node name="Godot" parent="LevelLayer/Level" instance=ExtResource( 16 )]
 physics_material_override = SubResource( 1 )
-can_sleep = false
-script = ExtResource( 7 )
 
-[node name="Glue" type="RigidBody2D" parent="LevelLayer/Level" instance=ExtResource( 13 )]
+[node name="Glue" parent="LevelLayer/Level" instance=ExtResource( 13 )]
 position = Vector2( 1115.66, -159.002 )
 physics_material_override = SubResource( 2 )
-can_sleep = false
-script = ExtResource( 8 )
-charge = ExtResource( 3 )
 
-[node name="Hands" type="Node2D" parent="LevelLayer/Level" instance=ExtResource( 18 )]
-z_index = 1
+[node name="Hands" parent="LevelLayer/Level" instance=ExtResource( 18 )]
 
 [node name="Boundaries" type="StaticBody2D" parent="LevelLayer/Level"]
 physics_material_override = SubResource( 3 )
@@ -73,32 +55,19 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelLayer/Level/Boundaries"]
 polygon = PoolVector2Array( 0, 0, 0, 656, 1280, 656, 1280, 0, 1344, 0, 1344, 704, -64, 712, -64, 0 )
 
-[node name="Puzzle" type="Node2D" parent="LevelLayer/Level" instance=ExtResource( 15 )]
-script = ExtResource( 11 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 609.725 ]
-}
+[node name="Puzzle" parent="LevelLayer/Level" instance=ExtResource( 15 )]
 
-[node name="GlueSpawner" type="Position2D" parent="LevelLayer/Level" instance=ExtResource( 17 )]
+[node name="GlueSpawner" parent="LevelLayer/Level" instance=ExtResource( 17 )]
 position = Vector2( 896, -64 )
-script = ExtResource( 10 )
 container_path = NodePath("..")
-glue_scene = ExtResource( 13 )
-glue_charge = ExtResource( 3 )
 
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 layer = 2
 
-[node name="Interface" type="Control" parent="InterfaceLayer" instance=ExtResource( 6 )]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-script = ExtResource( 5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-glue_charge = ExtResource( 3 )
-time = ExtResource( 1 )
-pop_label_scene = ExtResource( 4 )
+[node name="HUD" parent="InterfaceLayer" instance=ExtResource( 6 )]
+
+[node name="GameOverScreen" parent="InterfaceLayer" instance=ExtResource( 3 )]
+visible = false
 [connection signal="finished" from="Time" to="." method="_on_Time_finished"]
 [connection signal="piece_fit" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_piece_fit"]
