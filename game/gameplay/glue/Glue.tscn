@@ -6,7 +6,8 @@
 [ext_resource path="res://game/gameplay/glue/Glue.gd" type="Script" id=4]
 [ext_resource path="res://game/gameplay/glue/GlueCharge.tres" type="Resource" id=5]
 [ext_resource path="res://game/gameplay/glue/GlueCast.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/sound_effects/squeeze.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/sfx/squeeze.ogg" type="AudioStream" id=7]
+
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.75 ), 0.0, 0.0, 0, 0 ]

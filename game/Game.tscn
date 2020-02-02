@@ -4,7 +4,7 @@
 [ext_resource path="res://devel/GameTime.gd" type="Script" id=2]
 [ext_resource path="res://game/interface/GameOverScreen.tscn" type="PackedScene" id=3]
 [ext_resource path="res://game/gameplay/PuzzleSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/sound_effects/time_out.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/sfx/time_out.ogg" type="AudioStream" id=5]
 [ext_resource path="res://game/interface/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/gameplay/glue/Glue.tscn" type="PackedScene" id=13]
 [ext_resource path="res://game/gameplay/GlueRecharge.tscn" type="PackedScene" id=14]
@@ -14,6 +14,7 @@
 [ext_resource path="res://game/gameplay/Hands.tscn" type="PackedScene" id=18]
 [ext_resource path="res://game/areas/Background.tscn" type="PackedScene" id=19]
 [ext_resource path="res://game/Game.gd" type="Script" id=20]
+
 
 [sub_resource type="PhysicsMaterial" id=1]
 bounce = 1.0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/squeeze.ogg-79dbbdffa06c1b2320ec3e20a2f3c856.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/squeeze.ogg"
+dest_files=[ "res://.import/squeeze.ogg-79dbbdffa06c1b2320ec3e20a2f3c856.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
