@@ -1,0 +1,52 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=2]
+
+[ext_resource path="res://assets/textures/vase2/vase2_piece5.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/vase2/vase2_piece1.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/vase2/vase2_piece2.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/vase2/vase2_piece7.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/vase2/vase2_piece6.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/vase2/vase2_piece4.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/vase2/vase2_piece3.png" type="Texture" id=7]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": false,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "7",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": false,
+"name": "1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "6",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "0",
+"speed": 5.0
+} ]
