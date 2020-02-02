@@ -18,11 +18,12 @@ func grab(hand):
 	collision_mask &= ~1
 	$Animator.play("grab")
 
-func release():
+func release(reset_collision=true):
 	grabber = null
 	gravity_scale = 1
-	collision_layer |= 1
-	collision_mask |= 1
+	if reset_collision:
+		collision_layer |= 1
+		collision_mask |= 1
 	$Animator.play("idle")
 	emit_signal("release")
 
