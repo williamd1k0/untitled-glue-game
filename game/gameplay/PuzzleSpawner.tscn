@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/gameplay/PuzzleSpawner.gd" type="Script" id=1]
+[ext_resource path="res://game/gameplay/PuzzlesEasy.tres" type="Resource" id=2]
+
+[node name="PuzzleSpawner" type="Node2D"]
+script = ExtResource( 1 )
+puzzles = ExtResource( 2 )
+container = NodePath(".")

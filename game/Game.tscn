@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://game/gameplay/Time.tres" type="Resource" id=1]
 [ext_resource path="res://devel/GameTime.gd" type="Script" id=2]
 [ext_resource path="res://game/interface/GameOverScreen.tscn" type="PackedScene" id=3]
+[ext_resource path="res://game/gameplay/PuzzleSpawner.tscn" type="PackedScene" id=4]
 [ext_resource path="res://game/interface/HUD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://game/gameplay/glue/Glue.tscn" type="PackedScene" id=13]
 [ext_resource path="res://game/gameplay/GlueRecharge.tscn" type="PackedScene" id=14]
@@ -61,6 +62,9 @@ polygon = PoolVector2Array( 0, 0, 0, 656, 1280, 656, 1280, 0, 1344, 0, 1344, 704
 position = Vector2( 896, -64 )
 container_path = NodePath("..")
 
+[node name="PuzzleSpawner" parent="LevelLayer/Level" instance=ExtResource( 4 )]
+container = NodePath("..")
+
 [node name="InterfaceLayer" type="CanvasLayer" parent="."]
 pause_mode = 2
 layer = 2
@@ -71,3 +75,4 @@ layer = 2
 visible = false
 [connection signal="finished" from="Time" to="." method="_on_Time_finished"]
 [connection signal="piece_fit" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_piece_fit"]
+[connection signal="tree_exited" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_tree_exited"]
