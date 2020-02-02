@@ -26,7 +26,9 @@ func _on_Puzzle_piece_fit(piece_position, fit_score):
 func _on_Time_finished():
 	$SFXTimeOut.play()
 	BGM.start_effect("high_pass")
-	$InterfaceLayer/HUD.hide()
+	if score > LocalScore.best_score:
+		LocalScore.best_score = score
+		LocalScore.save_score()
 	game_over_screen.set_final_score(score)
 	game_over_screen.show()
 	get_tree().paused = true

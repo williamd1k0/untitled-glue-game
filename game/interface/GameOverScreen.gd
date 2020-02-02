@@ -3,7 +3,7 @@ extends Control
 
 func set_final_score(score):
 	$FinalScoreLabel.text = "Score: %d" % score
-
+	$BestScoreLabel.text = "Best: %d" % LocalScore.best_score
 
 func _on_RetryButton_pressed():
 	get_tree().paused = false

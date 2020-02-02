@@ -39,6 +39,7 @@ config/icon="res://icon.png"
 [autoload]
 
 BGM="*res://game/BGM.tscn"
+LocalScore="*res://game/globals/LocalScore.tscn"
 
 [display]
 
