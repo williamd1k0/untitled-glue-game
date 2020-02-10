@@ -8,7 +8,7 @@ func _ready():
 	tutorial_piece.global_position = piece_reference.global_position
 
 
-func _on_Puzzle_tree_exited():
+func _on_Puzzle_completed():
 	get_tree().paused = true
 	$TutorialLayer/Instructions/Congratulations.show()
 	$TutorialLayer/Instructions/HBoxContainer.hide()

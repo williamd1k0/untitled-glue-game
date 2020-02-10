@@ -92,6 +92,11 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 28 ), ExtResource( 20 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "move_grab",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 9 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "grab",
@@ -101,11 +106,6 @@ animations = [ {
 "loop": true,
 "name": "move",
 "speed": 4.0
-}, {
-"frames": [ ExtResource( 11 ), ExtResource( 9 ), ExtResource( 28 ), ExtResource( 20 ), ExtResource( 29 ), ExtResource( 25 ), ExtResource( 24 ), ExtResource( 21 ), ExtResource( 16 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "move_grab",
-"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=8]
@@ -330,7 +330,7 @@ position = Vector2( 213.5, 152 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 7 )
 animation = "move_grab"
-frame = 2
+frame = 9
 playing = true
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="TutorialLayer/Instructions/HBoxContainer"]
@@ -361,7 +361,7 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TutorialLayer/Instructions/Fade"]
 autoplay = "fade"
 anims/fade = SubResource( 8 )
-[connection signal="tree_exited" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_tree_exited"]
+[connection signal="completed" from="LevelLayer/Level/Puzzle" to="." method="_on_Puzzle_completed"]
 [connection signal="animation_finished" from="LevelLayer/Level/Puzzle/AnimationPlayer" to="LevelLayer/Level/Puzzle" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="pressed" from="TutorialLayer/Instructions/Congratulations/PlayButton" to="." method="_on_PlayButton_pressed"]
 
