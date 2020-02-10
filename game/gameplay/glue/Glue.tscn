@@ -8,8 +8,69 @@
 [ext_resource path="res://game/gameplay/glue/GlueCast.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/sfx/squeeze.ogg" type="AudioStream" id=7]
 
-[sub_resource type="Curve" id=1]
-_data = [ Vector2( 0, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.75 ), 0.0, 0.0, 0, 0 ]
+[sub_resource type="Animation" id=1]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "grab" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "audio"
+tracks/3/path = NodePath("SFX")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite:flip_v")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=2]
 tracks/0/type = "value"
@@ -19,101 +80,37 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -180.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "grab" ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite/CPUParticles2D:emitting")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/4/type = "audio"
-tracks/4/path = NodePath("SFX")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"clips": [ {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource( 7 )
-} ],
-"times": PoolRealArray( 0 )
-}
-
-[sub_resource type="Animation" id=3]
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:rotation_degrees")
+tracks/1/path = NodePath("Sprite:animation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:animation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ "idle" ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CPUParticles2D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite/CPUParticles2D:emitting")
+tracks/3/path = NodePath("Sprite:flip_v")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -125,26 +122,18 @@ tracks/3/keys = {
 "values": [ false ]
 }
 
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 0.986364 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.75 ), 0.0, 0.0, 0, 0 ]
+
 [node name="Glue" instance=ExtResource( 1 )]
 script = ExtResource( 4 )
 charge = ExtResource( 5 )
+squeeze_ratio = 8.0
 
 [node name="Sprite" parent="." index="0"]
 frames = ExtResource( 2 )
-animation = "idle"
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprite" index="0"]
-show_behind_parent = true
-position = Vector2( 0, -104 )
-emitting = false
-amount = 128
-local_coords = false
-texture = ExtResource( 3 )
-direction = Vector2( 0, -1 )
-spread = 1.0
-gravity = Vector2( 0, 0 )
-initial_velocity = 400.0
-scale_amount_curve = SubResource( 1 )
+animation = "grab"
+flip_v = true
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = null
@@ -153,8 +142,8 @@ shape = null
 polygon = PoolVector2Array( 6.64089, -111.777, 0.660294, -115.194, -5.74749, -111.634, -29.5871, -50.6404, -31.8513, -31.0181, -59.0206, -11.7731, -57.8885, 98.7909, -39.1076, 114.314, 40.9776, 114.64, 58.7132, 96.1494, 57.734, -13.0533, 33.0533, -29.886, 31.5438, -47.9989 )
 
 [node name="Animator" parent="." index="3"]
-anims/grab = SubResource( 2 )
-anims/idle = SubResource( 3 )
+anims/grab = SubResource( 1 )
+anims/idle = SubResource( 2 )
 
 [node name="GlueCast" parent="." index="4" instance=ExtResource( 6 )]
 
@@ -164,4 +153,16 @@ scale = Vector2( 5.75, 11.2 )
 [node name="SFX" type="AudioStreamPlayer2D" parent="." index="6"]
 stream = ExtResource( 7 )
 bus = "SFX"
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." index="7"]
+show_behind_parent = true
+position = Vector2( 0, 114 )
+amount = 128
+local_coords = false
+texture = ExtResource( 3 )
+direction = Vector2( 0, 1 )
+spread = 1.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 400.0
+scale_amount_curve = SubResource( 3 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

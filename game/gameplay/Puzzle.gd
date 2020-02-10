@@ -1,6 +1,7 @@
 extends Node2D
 
 signal piece_fit(piece_position, fit_score)
+signal completed
 
 var RNG: RandomNumberGenerator = RandomNumberGenerator.new()
 
@@ -78,10 +79,10 @@ func _on_FitArea_body_entered(body, piece_id):
 
 func _on_Tween_all_completed():
 	if fit_pieces.size() == pieces_total:
-		#fit_area.z_index -= 1
 		yield(get_tree().create_timer(0.3), "timeout")
 		$RefPosition.modulate = puzzle_color
 		fit_area.hide()
+		emit_signal("completed")
 		$AnimationPlayer.play("completed")
 
 

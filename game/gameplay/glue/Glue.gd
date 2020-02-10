@@ -18,6 +18,7 @@ func squeeze(delta):
 	charge.current_amount -= squeeze_ratio * delta
 	$GlueCast.enabled = charge.current_amount > 0
 
+
 func can_grab():
 	return .can_grab() and charge.current_amount > 0
 
@@ -25,6 +26,9 @@ func can_grab():
 func _on_charge_depleted():
 	collision_layer = 0
 	collision_mask = 0
+	var throw_direction = sign(rand_range(-1, 1))
+	apply_impulse(Vector2.ZERO, Vector2(throw_direction, -1) * 400)
+	apply_torque_impulse(throw_direction * 20000)
 	if grabber != null:
 		grabber.release(false)
 
