@@ -23,8 +23,10 @@ var deadzone = 0.3
 var grabbing = false
 var boundaries: Rect2
 var grabbed_item: GrabItem
+var is_moving = false
 
 onready var grab_position = $GrabPosition
+onready var animator = $Animator
 
 
 func _physics_process(delta):
@@ -36,18 +38,24 @@ func detect_grab():
 	var grab := Input.is_action_pressed(ACTIONS[hand][4])
 	if grabbing != grab:
 		grabbing = grab
-		$Animator.play(ANIM_MAP[grabbing])
+		animator.play(ANIM_MAP[grabbing])
 		if grabbing:
 			grab()
 		else:
 			release()
 
 
-func move(delta):
-	var input_motion := Vector2(
+func get_movement_direction():
+	var direction = Vector2(
 		Input.get_action_strength(ACTIONS[hand][3]) - Input.get_action_strength(ACTIONS[hand][2]),
 		Input.get_action_strength(ACTIONS[hand][1]) - Input.get_action_strength(ACTIONS[hand][0])
 	)
+	return direction
+
+
+func move(delta):
+	var input_motion = get_movement_direction()
+	
 	var motion: Vector2 = input_motion*speed*delta
 	if boundaries:
 		var bo = boundaries
@@ -58,7 +66,12 @@ func move(delta):
 				clamp(motion_test.y, bo.position.y, bo.end.y)
 			)
 			motion = motion_test - grab_position.global_position
+	if is_moving:
+		rotation_degrees = lerp(rotation_degrees, 70 * -sign(motion.x), 3 * delta)
+	else:
+		rotation_degrees = lerp(rotation_degrees, 0, 5 * delta)
 	translate(motion)
+	is_moving = not motion.x == 0.0
 
 
 func find_grab_item():

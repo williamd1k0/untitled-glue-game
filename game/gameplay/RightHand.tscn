@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://game/gameplay/Hand.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/textures/hand1.png" type="Texture" id=2]
 
 [node name="RightHand" instance=ExtResource( 1 )]
-hand = 1
 
-[node name="Sprite" parent="." index="1"]
+[node name="Sprite" parent="." index="2"]
 position = Vector2( 71, -51 )
-texture = ExtResource( 2 )
 flip_h = true
